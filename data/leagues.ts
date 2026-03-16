@@ -13,9 +13,16 @@ export interface League {
   color: string;
   teams: Team[];
   schedule: Match[];
+  /** Current/default points table (used when pointsTableByYear is not set) */
   pointsTable: PointsEntry[];
+  /** Points table by year; when set, year dropdown is shown and this data is used */
+  pointsTableByYear?: Record<string, PointsEntry[]>;
   venues: Venue[];
   faqs: FAQ[];
+  /** SEO title for the league page */
+  seoTitle?: string;
+  /** Meta description for the league page */
+  seoDescription?: string;
 }
 
 export interface WomenLeague {
@@ -123,6 +130,32 @@ export const leagues: League[] = [
       { team: "Lucknow Super Giants", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
       { team: "Delhi Capitals", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
     ],
+    pointsTableByYear: {
+      "2026": [
+        { team: "Royal Challengers Bengaluru", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Sunrisers Hyderabad", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Mumbai Indians", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Kolkata Knight Riders", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Rajasthan Royals", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Chennai Super Kings", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Punjab Kings", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Gujarat Titans", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Lucknow Super Giants", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Delhi Capitals", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+      ],
+      "2025": [
+        { team: "Punjab Kings", played: 14, won: 9, lost: 4, nrr: "+0.372", points: 19 },
+        { team: "Royal Challengers Bengaluru", played: 14, won: 9, lost: 4, nrr: "+0.301", points: 19 },
+        { team: "Gujarat Titans", played: 14, won: 9, lost: 5, nrr: "+0.254", points: 18 },
+        { team: "Mumbai Indians", played: 14, won: 8, lost: 6, nrr: "+1.142", points: 16 },
+        { team: "Delhi Capitals", played: 14, won: 7, lost: 6, nrr: "+0.011", points: 15 },
+        { team: "Sunrisers Hyderabad", played: 14, won: 6, lost: 7, nrr: "-0.241", points: 13 },
+        { team: "Lucknow Super Giants", played: 14, won: 6, lost: 8, nrr: "-0.376", points: 12 },
+        { team: "Kolkata Knight Riders", played: 14, won: 5, lost: 7, nrr: "-0.305", points: 12 },
+        { team: "Rajasthan Royals", played: 14, won: 4, lost: 10, nrr: "-0.549", points: 8 },
+        { team: "Chennai Super Kings", played: 14, won: 4, lost: 10, nrr: "-0.647", points: 8 },
+      ],
+    },
     venues: [
       { name: "M Chinnaswamy Stadium", city: "Bengaluru", capacity: "40,000", image: "wankhede" },
       { name: "Wankhede Stadium", city: "Mumbai", capacity: "33,108", image: "wankhede" },
@@ -139,6 +172,8 @@ export const leagues: League[] = [
       { question: "When does IPL 2026 start?", answer: "IPL 2026 begins on March 28, 2026 (RCB vs SRH at Bengaluru) and the final is on May 31, 2026. The first phase (20 matches) runs till April 12." },
       { question: "How many teams are in IPL?", answer: "There are 10 teams: RCB, SRH, MI, KKR, RR, CSK, Punjab Kings, Gujarat Titans, Lucknow Super Giants, and Delhi Capitals." },
     ],
+    seoTitle: "IPL 2026 Schedule: Match Dates, Points Table, Teams & Venues",
+    seoDescription: "Check IPL 2026 full schedule, match fixtures, points table, teams, venues, and latest news. Stay updated with every IPL match.",
   },
   {
     id: "psl",
@@ -217,6 +252,28 @@ export const leagues: League[] = [
       { team: "Hyderabad Kingsmen", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
       { team: "Rawalpindi Pindiz", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
     ],
+    pointsTableByYear: {
+      "2026": [
+        { team: "Islamabad United", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Karachi Kings", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Lahore Qalandars", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Multan Sultans", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Peshawar Zalmi", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Quetta Gladiators", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Hyderabad Kingsmen", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Rawalpindi Pindiz", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+      ],
+      "2025": [
+        { team: "Quetta Gladiators", played: 10, won: 7, lost: 2, nrr: "+1.393", points: 15 },
+        { team: "Islamabad United", played: 10, won: 6, lost: 4, nrr: "+0.372", points: 12 },
+        { team: "Karachi Kings", played: 10, won: 6, lost: 4, nrr: "+0.049", points: 12 },
+        { team: "Lahore Qalandars", played: 10, won: 5, lost: 4, nrr: "+1.036", points: 11 },
+        { team: "Peshawar Zalmi", played: 10, won: 4, lost: 6, nrr: "-0.293", points: 8 },
+        { team: "Multan Sultans", played: 10, won: 1, lost: 9, nrr: "-2.449", points: 2 },
+        { team: "Hyderabad Kingsmen", played: 10, won: 2, lost: 8, nrr: "-0.512", points: 4 },
+        { team: "Rawalpindi Pindiz", played: 10, won: 3, lost: 7, nrr: "-0.612", points: 6 },
+      ],
+    },
     venues: [
       { name: "Gaddafi Stadium", city: "Lahore", capacity: "34,000", image: "lahore" },
       { name: "National Bank Cricket Arena", city: "Karachi", capacity: "35,000", image: "wankhede" },
@@ -230,6 +287,8 @@ export const leagues: League[] = [
       { question: "How many teams are in PSL 11?", answer: "There are 8 teams: Islamabad United, Karachi Kings, Lahore Qalandars, Multan Sultans, Peshawar Zalmi, Quetta Gladiators, Hyderabad Kingsmen, and Rawalpindi Pindiz." },
       { question: "Where can I watch PSL matches?", answer: "PSL matches are broadcast on various sports channels and streaming platforms worldwide." },
     ],
+    seoTitle: "PSL 2026 Schedule: Match Dates, Points Table, Teams & Venues",
+    seoDescription: "Explore PSL 2026 full schedule including match dates, points table, team squads, venues, and latest news.",
   },
   {
     id: "bbl",
@@ -487,6 +546,19 @@ export const womenLeagues: WomenLeague[] = [
 
 export const getLeagueById = (id: string): League | undefined =>
   leagues.find((l) => l.id === id);
+
+/** Returns list of years that have points table data (newest first) */
+export const getPointsTableYears = (league: League): string[] => {
+  if (!league.pointsTableByYear) return [];
+  return Object.keys(league.pointsTableByYear).sort((a, b) => Number(b) - Number(a));
+};
+
+/** Returns points table for a given year; falls back to default pointsTable if year not in pointsTableByYear */
+export const getPointsTableForYear = (league: League, year: string): PointsEntry[] => {
+  const byYear = league.pointsTableByYear?.[year];
+  if (byYear) return byYear;
+  return league.pointsTable;
+};
 
 export const globalFaqs: FAQ[] = [
   { question: "What leagues are included?", answer: "We cover IPL, PSL, BBL, CPL, BPL, SA20, ILT20, LPL, MLC, NPL, The Hundred, and women's leagues (WPL, WBBL, WCPL, The Hundred Women)." },

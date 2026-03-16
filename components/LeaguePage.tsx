@@ -1,10 +1,10 @@
 "use client";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Clock, MapPin, Trophy, Users } from "lucide-react";
-import { getLeagueById } from "@/data/leagues";
+import { ArrowLeft, Calendar, ChevronDown, Clock, MapPin, Trophy, Users } from "lucide-react";
+import { getLeagueById, getPointsTableYears, getPointsTableForYear } from "@/data/leagues";
 import { venueImages } from "@/components/VenuesSection";
 import Navbar from "@/components/Navbar";
 import FAQSection from "@/components/FAQSection";
@@ -12,13 +12,73 @@ import Footer from "@/components/Footer";
 import stadiumHero from "@/public/images/stadium-hero.jpg"
 import Image from "next/image";
 
+// IPL team logos
+import iplRcb from "@/public/images/IPL/ipl-rcb.png";
+import iplSunrisers from "@/public/images/IPL/ipl-sunrisers.png";
+import iplMumbai from "@/public/images/IPL/ipl-mumbai.png";
+import iplKnight from "@/public/images/IPL/ipl-knight.png";
+import iplRoyals from "@/public/images/IPL/ipl-royals.png";
+import iplChennai from "@/public/images/IPL/ipl-chenai.png";
+import iplKings from "@/public/images/IPL/ipl-kings.png";
+import iplGujarat from "@/public/images/IPL/ipl-gujjar.png";
+import iplLucknow from "@/public/images/IPL/ipl-lkhnow.png";
+import iplDelhi from "@/public/images/IPL/ipl-delhi,.png";
+
+const iplTeamLogos: Record<string, { src: string }> = {
+  "Royal Challengers Bengaluru": { src: iplRcb.src },
+  "Sunrisers Hyderabad": { src: iplSunrisers.src },
+  "Mumbai Indians": { src: iplMumbai.src },
+  "Kolkata Knight Riders": { src: iplKnight.src },
+  "Rajasthan Royals": { src: iplRoyals.src },
+  "Chennai Super Kings": { src: iplChennai.src },
+  "Punjab Kings": { src: iplKings.src },
+  "Gujarat Titans": { src: iplGujarat.src },
+  "Lucknow Super Giants": { src: iplLucknow.src },
+  "Delhi Capitals": { src: iplDelhi.src },
+};
+
+// PSL team logos
+import pslIslamabadUnited from "@/public/images/PSL/psl-islamabad-united.png";
+import pslKarachiKings from "@/public/images/PSL/psl-karachi-kings.png";
+import pslLahoreQalandars from "@/public/images/PSL/psl-lahore-qalandars.png";
+import pslMultanSultans from "@/public/images/PSL/psl-multan-sultan.png";
+import pslPeshawarZalmi from "@/public/images/PSL/psl-peshawar-zalmi.png";
+import pslQuettaGladiators from "@/public/images/PSL/psl-quetta-gladiators.png";
+import pslHyderabadKingsmen from "@/public/images/PSL/Hyderabad-Kingsmen-logo-1.png";
+import pslRawalpindiPindiz from "@/public/images/PSL/Rawalpindi-Pindiz-Logo.png";
+
+const pslTeamLogos: Record<string, { src: string }> = {
+  "Islamabad United": { src: pslIslamabadUnited.src },
+  "Karachi Kings": { src: pslKarachiKings.src },
+  "Lahore Qalandars": { src: pslLahoreQalandars.src },
+  "Multan Sultans": { src: pslMultanSultans.src },
+  "Peshawar Zalmi": { src: pslPeshawarZalmi.src },
+  "Quetta Gladiators": { src: pslQuettaGladiators.src },
+  "Hyderabad Kingsmen": { src: pslHyderabadKingsmen.src },
+  "Rawalpindi Pindiz": { src: pslRawalpindiPindiz.src },
+};
+
 const tabs = ["Schedule", "Points Table", "Teams", "Venues", "FAQ"];
+
+const leagueH1: Record<string, string> = {
+  ipl: "IPL 2026 Schedule – Full Fixtures, Teams, Points Table & Venues",
+  psl: "PSL 2026 Schedule – Full Fixtures, Teams, Points Table & Venues",
+};
 
 const LeaguePage = () => {
   const params = useParams();
   const leagueId = typeof params?.leagueId === "string" ? params.leagueId : "";
   const league = getLeagueById(leagueId || "");
   const [activeTab, setActiveTab] = useState("Schedule");
+  const [selectedPointsYear, setSelectedPointsYear] = useState("2026");
+
+  useEffect(() => {
+    if (league) {
+      const years = getPointsTableYears(league);
+      const defaultYear = years.length > 0 ? years[0] : "2026";
+      setSelectedPointsYear((prev) => (years.includes(prev) ? prev : defaultYear));
+    }
+  }, [league?.id]);
 
   if (!league) {
     return (
@@ -30,6 +90,10 @@ const LeaguePage = () => {
       </div>
     );
   }
+
+  const pointsTableYears = getPointsTableYears(league);
+  const displayYears = pointsTableYears.length > 0 ? pointsTableYears : ["2026"];
+  const pointsTableData = getPointsTableForYear(league, selectedPointsYear);
 
   return (
     <div className="min-h-screen bg-background">
@@ -51,7 +115,7 @@ const LeaguePage = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <span className="text-sm font-medium text-primary tracking-wider uppercase">{league.season}</span>
             <h1 className="text-4xl md:text-6xl font-display font-extrabold text-foreground mt-2 mb-3">
-              {league.name}
+              {leagueH1[league.id] ?? league.name}
             </h1>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-1.5">
@@ -114,7 +178,30 @@ const LeaguePage = () => {
         )}
 
         {activeTab === "Points Table" && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="glass-card overflow-hidden">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
+            {displayYears.length > 1 && (
+              <div className="flex items-center gap-2">
+                <label htmlFor="points-year" className="text-sm font-medium text-muted-foreground">
+                  Points table:
+                </label>
+                <div className="relative">
+                  <select
+                    id="points-year"
+                    value={selectedPointsYear}
+                    onChange={(e) => setSelectedPointsYear(e.target.value)}
+                    className="appearance-none bg-card border border-glass-border rounded-xl pl-4 pr-9 py-2.5 text-sm font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  >
+                    {displayYears.map((y) => (
+                      <option key={y} value={y}>
+                        {y} Points Table
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+                </div>
+              </div>
+            )}
+            <div className="glass-card overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
@@ -129,7 +216,14 @@ const LeaguePage = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {league.pointsTable.map((entry, i) => (
+                  {pointsTableData.map((entry, i) => {
+                    const pointsLogo =
+                      league.id === "ipl"
+                        ? iplTeamLogos[entry.team]
+                        : league.id === "psl"
+                          ? pslTeamLogos[entry.team]
+                          : undefined;
+                    return (
                     <motion.tr
                       key={entry.team}
                       initial={{ opacity: 0 }}
@@ -146,43 +240,82 @@ const LeaguePage = () => {
                           {i + 1}
                         </span>
                       </td>
-                      <td className="p-4 font-medium text-foreground">{entry.team}</td>
+                      <td className="p-4">
+                        <div className="flex items-center gap-3">
+                          {pointsLogo ? (
+                            <div className="w-9 h-9 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden">
+                              <Image
+                                src={pointsLogo.src}
+                                alt={entry.team}
+                                width={36}
+                                height={36}
+                                className="w-full h-full object-contain"
+                              />
+                            </div>
+                          ) : null}
+                          <span className="font-medium text-foreground">{entry.team}</span>
+                        </div>
+                      </td>
                       <td className="p-4 text-center text-muted-foreground">{entry.played}</td>
                       <td className="p-4 text-center text-foreground font-medium">{entry.won}</td>
                       <td className="p-4 text-center text-muted-foreground">{entry.lost}</td>
                       <td className="p-4 text-center text-muted-foreground">{entry.nrr}</td>
                       <td className="p-4 text-center font-bold text-primary">{entry.points}</td>
                     </motion.tr>
-                  ))}
+                    );
+                  })}
                 </tbody>
               </table>
+            </div>
             </div>
           </motion.div>
         )}
 
         {activeTab === "Teams" && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {league.teams.map((team, i) => (
-              <motion.div
-                key={team.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.08 }}
-                whileHover={{ y: -4, scale: 1.02 }}
-                className="glass-card-hover p-6 flex items-center gap-4"
-              >
-                <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center font-display font-bold text-lg"
-                  style={{ backgroundColor: team.color + "22", color: team.color }}
+            {league.teams.map((team, i) => {
+              const isPsl = league.id === "psl";
+              const logo =
+              league.id === "ipl"
+                ? iplTeamLogos[team.name]
+                : isPsl
+                  ? pslTeamLogos[team.name]
+                  : undefined;
+
+              return (
+                <motion.div
+                  key={team.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  className="glass-card-hover p-6 flex items-center gap-4"
                 >
-                  {team.shortName}
-                </div>
-                <div>
-                  <h3 className="font-display font-semibold text-foreground">{team.name}</h3>
-                  <p className="text-sm text-muted-foreground">{league.shortName}</p>
-                </div>
-              </motion.div>
-            ))}
+                  {logo ? (
+                    <div className="w-16 h-16 rounded-xl flex items-center justify-center overflow-hidden">
+                      <Image
+                        src={logo.src}
+                        alt={team.name}
+                        width={64}
+                        height={64}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className="w-14 h-14 rounded-xl flex items-center justify-center font-display font-bold text-lg"
+                      style={{ backgroundColor: team.color + "22", color: team.color }}
+                    >
+                      {team.shortName}
+                    </div>
+                  )}
+                  <div>
+                    <h3 className="font-display font-semibold text-foreground">{team.name}</h3>
+                    <p className="text-sm text-muted-foreground">{league.shortName}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         )}
 
