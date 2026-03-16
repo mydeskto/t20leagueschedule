@@ -75,7 +75,7 @@ const Navbar = () => {
                   transition={{ duration: 0.2 }}
                   className="absolute top-full left-0 pt-2"
                 >
-                  <div className="bg-card/95 backdrop-blur-2xl border border-glass-border rounded-2xl p-2 min-w-[220px] shadow-2xl shadow-background/60">
+                  <div className="bg-card/95 backdrop-blur-2xl border border-glass-border rounded-2xl p-2 min-w-[220px] max-h-[70vh] overflow-y-auto shadow-2xl shadow-background/60">
                     {leagues.map((league) => (
                       <Link
                         key={league.id}

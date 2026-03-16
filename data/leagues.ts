@@ -518,6 +518,7 @@ export const leagues: League[] = [
     ],
     venues: [{ name: "Sher-e-Bangla Stadium", city: "Dhaka", capacity: "26,000", image: "lahore" }],
    faqs: [{ question: "When is NPL 2026?", answer: "NPL 2026 is expected October–November 2026." }],
+    logo: "/images/NPL-Logo.png",
   },
   {
     id: "the-hundred",
@@ -545,6 +546,7 @@ export const leagues: League[] = [
     ],
     venues: [{ name: "The Oval", city: "London", capacity: "25,500", image: "mcg" }],
     faqs: [{ question: "What is The Hundred?", answer: "The Hundred is a unique 100-ball cricket format played in England." }],
+    logo: "/images/100-Logo.png",
   },
 ];
 
