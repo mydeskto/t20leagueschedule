@@ -1,0 +1,229 @@
+"use client";
+import { useParams } from "next/navigation";
+import Link from "next/link";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowLeft, Calendar, Clock, MapPin, Trophy, Users } from "lucide-react";
+import { getLeagueById } from "@/data/leagues";
+import { venueImages } from "@/components/VenuesSection";
+import Navbar from "@/components/Navbar";
+import FAQSection from "@/components/FAQSection";
+import Footer from "@/components/Footer";
+import stadiumHero from "@/public/images/stadium-hero.jpg"
+import Image from "next/image";
+
+const tabs = ["Schedule", "Points Table", "Teams", "Venues", "FAQ"];
+
+const LeaguePage = () => {
+  const params = useParams();
+  const leagueId = typeof params?.leagueId === "string" ? params.leagueId : "";
+  const league = getLeagueById(leagueId || "");
+  const [activeTab, setActiveTab] = useState("Schedule");
+
+  if (!league) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-display font-bold text-foreground mb-4">League Not Found</h1>
+          <Link href="/" className="text-primary hover:underline">Back to Home</Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Navbar />
+
+      {/* Hero */}
+      <section className="relative pt-16 pb-8 min-h-[50vh] flex items-end overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src={stadiumHero.src} alt="Stadium" width={1000} height={1000} className="w-full h-full object-cover ken-burns opacity-30" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
+
+        <div className="relative z-10 container-narrow px-4 md:px-8 pb-8">
+          <Link href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-6">
+            <ArrowLeft className="w-4 h-4" />
+            Back to All Leagues
+          </Link>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <span className="text-sm font-medium text-primary tracking-wider uppercase">{league.season}</span>
+            <h1 className="text-4xl md:text-6xl font-display font-extrabold text-foreground mt-2 mb-3">
+              {league.name}
+            </h1>
+            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <div className="flex items-center gap-1.5">
+                <Calendar className="w-4 h-4" />
+                Starts {league.startDate}
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Users className="w-4 h-4" />
+                {league.teams.length} Teams
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Tabs */}
+      <div className="sticky top-16 z-30 bg-background/80 backdrop-blur-xl border-b border-glass-border">
+        <div className="container-narrow px-4 md:px-8">
+          <div className="flex gap-1 overflow-x-auto scrollbar-hide">
+            {tabs.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-5 py-4 text-sm font-medium whitespace-nowrap transition-all border-b-2 ${
+                  activeTab === tab
+                    ? "border-primary text-primary"
+                    : "border-transparent text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Tab Content */}
+      <div className="container-narrow px-4 md:px-8 py-12">
+        {activeTab === "Schedule" && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-3">
+            {league.schedule.map((match, i) => (
+              <motion.div
+                key={match.id}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.05 }}
+                className="glass-card-hover p-5 flex flex-col md:flex-row md:items-center gap-3 md:gap-6"
+              >
+                <div className="flex-1 font-medium text-foreground">
+                  {match.team1} <span className="text-muted-foreground">vs</span> {match.team2}
+                </div>
+                <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" />{match.date}</div>
+                  <div className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" />{match.time}</div>
+                  <div className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" />{match.venue}</div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+
+        {activeTab === "Points Table" && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="glass-card overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-glass-border">
+                    <th className="text-left p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">#</th>
+                    <th className="text-left p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Team</th>
+                    <th className="text-center p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">P</th>
+                    <th className="text-center p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">W</th>
+                    <th className="text-center p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">L</th>
+                    <th className="text-center p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">NRR</th>
+                    <th className="text-center p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Pts</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {league.pointsTable.map((entry, i) => (
+                    <motion.tr
+                      key={entry.team}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: i * 0.08 }}
+                      className={`border-b border-glass-border/50 transition-colors hover:bg-glass ${
+                        i < 2 ? "bg-primary/5" : ""
+                      }`}
+                    >
+                      <td className="p-4">
+                        <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
+                          i === 0 ? "bg-primary text-primary-foreground" : "text-muted-foreground"
+                        }`}>
+                          {i + 1}
+                        </span>
+                      </td>
+                      <td className="p-4 font-medium text-foreground">{entry.team}</td>
+                      <td className="p-4 text-center text-muted-foreground">{entry.played}</td>
+                      <td className="p-4 text-center text-foreground font-medium">{entry.won}</td>
+                      <td className="p-4 text-center text-muted-foreground">{entry.lost}</td>
+                      <td className="p-4 text-center text-muted-foreground">{entry.nrr}</td>
+                      <td className="p-4 text-center font-bold text-primary">{entry.points}</td>
+                    </motion.tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </motion.div>
+        )}
+
+        {activeTab === "Teams" && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {league.teams.map((team, i) => (
+              <motion.div
+                key={team.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.08 }}
+                whileHover={{ y: -4, scale: 1.02 }}
+                className="glass-card-hover p-6 flex items-center gap-4"
+              >
+                <div
+                  className="w-14 h-14 rounded-xl flex items-center justify-center font-display font-bold text-lg"
+                  style={{ backgroundColor: team.color + "22", color: team.color }}
+                >
+                  {team.shortName}
+                </div>
+                <div>
+                  <h3 className="font-display font-semibold text-foreground">{team.name}</h3>
+                  <p className="text-sm text-muted-foreground">{league.shortName}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+
+        {activeTab === "Venues" && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {league.venues.map((venue, i) => (
+              <motion.div
+                key={venue.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="glass-card-hover group overflow-hidden"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={venueImages[venue.image] || venueImages.lahore}
+                    alt={venue.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-display font-bold text-foreground text-lg mb-2">{venue.name}</h3>
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" />{venue.city}</div>
+                    <div className="flex items-center gap-1.5"><Users className="w-3.5 h-3.5" />{venue.capacity}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+
+        {activeTab === "FAQ" && (
+          <FAQSection faqs={league.faqs} title={`${league.shortName} FAQ`} />
+        )}
+      </div>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default LeaguePage;

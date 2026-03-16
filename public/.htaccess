@@ -1,0 +1,131 @@
+# ============================================
+# Next.js Static Export - Production Config
+# Optimized for Hostinger
+# ============================================
+
+# ============================================
+# SECTION 1: URL Rewrites
+# ============================================
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Serve _next directory (JS/CSS chunks)
+  RewriteCond %{REQUEST_URI} ^/_next/
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # Serve existing files
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # Serve existing directories
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Favicon redirect
+  RewriteRule ^favicon\.ico$ /images/imag-for-url.png [L]
+
+  # Redirect /index.html to /
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^ / [L,R=301,NE]
+
+  # Redirect /path/index.html to /path/
+  RewriteCond %{THE_REQUEST} \s/+(.+)/index\.html[\s?] [NC]
+  RewriteRule ^ /%1/ [L,R=301,NE]
+
+  # Add trailing slash
+  RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]+$
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*)$ /$1/ [L,R=301]
+
+  # Serve directory index.html
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.*)/$ $1/index.html [L]
+
+  # Fallback to root
+  RewriteRule ^ /index.html [L]
+</IfModule>
+
+# ============================================
+# SECTION 2: MIME Types
+# ============================================
+<IfModule mod_mime.c>
+  AddType application/javascript .js .mjs
+  AddType text/css .css
+  AddType application/json .json
+  AddType image/webp .webp
+  AddType image/avif .avif
+  AddType image/svg+xml .svg
+  AddType font/woff .woff
+  AddType font/woff2 .woff2
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+# ============================================
+# SECTION 3: Caching Strategy
+# ============================================
+<IfModule mod_headers.c>
+  # _next/static files (hashed - cache forever)
+  <FilesMatch "_next/static/">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # JS & CSS (hashed - cache forever)
+  <FilesMatch "\.(js|css|mjs)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  
+  # Fonts (rarely change - cache forever)
+  <FilesMatch "\.(woff|woff2|ttf|otf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  
+  # Images (may update - cache 1 week with revalidation)
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|svg|ico)$">
+    Header set Cache-Control "public, max-age=604800, stale-while-revalidate=86400"
+  </FilesMatch>
+  
+  # HTML (never cache)
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
+  
+  # JSON (short cache)
+  <FilesMatch "\.json$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+</IfModule>
+
+# ============================================
+# SECTION 4: Security Headers
+# ============================================
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ============================================
+# SECTION 5: CORS
+# ============================================
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|mjs|woff|woff2)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
+
+# ============================================
+# SECTION 6: Compression
+# ============================================
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ============================================
+# SECTION 7: Performance
+# ============================================
+FileETag None
+ServerSignature Off
