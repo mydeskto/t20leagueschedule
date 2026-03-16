@@ -114,9 +114,16 @@ const LeaguePage = () => {
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <span className="text-sm font-medium text-primary tracking-wider uppercase">{league.season}</span>
-            <h1 className="text-4xl md:text-6xl font-display font-extrabold text-foreground mt-2 mb-3">
-              {leagueH1[league.id] ?? league.name}
-            </h1>
+            <div className="flex items-center gap-4 mt-2 mb-3">
+              {league.logo && (
+                <div className="w-14 h-14 md:w-20 md:h-20 rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden border border-glass-border">
+                  <Image src={league.logo} alt="" width={72} height={72} className="w-full h-full object-contain" />
+                </div>
+              )}
+              <h1 className="text-4xl md:text-6xl font-display font-extrabold text-foreground">
+                {leagueH1[league.id] ?? league.name}
+              </h1>
+            </div>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-1.5">
                 <Calendar className="w-4 h-4" />

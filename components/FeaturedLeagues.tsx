@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Calendar, TrendingUp } from "lucide-react";
 import { leagues, womenLeagues } from "@/data/leagues";
 import gsap from "gsap";
@@ -96,7 +97,13 @@ const FeaturedLeagues = () => {
 
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-5">
-                  <span className="text-3xl">{leagueEmojis[league.id] || "🏏"}</span>
+                  {league.logo ? (
+                    <div className="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden border border-glass-border">
+                      <Image src={league.logo} alt="" width={48} height={48} className="w-full h-full object-contain" />
+                    </div>
+                  ) : (
+                    <span className="text-3xl">{leagueEmojis[league.id] || "🏏"}</span>
+                  )}
                   <span className="text-[10px] font-semibold text-muted-foreground bg-foreground/5 px-2.5 py-1 rounded-full uppercase tracking-wider">
                     {league.season}
                   </span>

@@ -82,7 +82,13 @@ const Navbar = () => {
                         href={`/${league.id}`}
                         className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all duration-200"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                        {league.logo ? (
+                          <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden bg-background/40">
+                            <Image src={league.logo} alt="" width={32} height={32} className="w-full h-full object-contain" />
+                          </div>
+                        ) : (
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary/60 flex-shrink-0" />
+                        )}
                         {league.shortName} — {league.name}
                       </Link>
                     ))}
@@ -138,8 +144,13 @@ const Navbar = () => {
                     <Link
                       key={l.id}
                       href={`/${l.id}`}
-                      className="block px-4 py-2.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all"
+                      className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all"
                     >
+                      {l.logo ? (
+                        <div className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden bg-background/40">
+                          <Image src={l.logo} alt="" width={28} height={28} className="w-full h-full object-contain" />
+                        </div>
+                      ) : null}
                       {l.name}
                     </Link>
                   ))}
@@ -163,7 +174,12 @@ const Navbar = () => {
               <Link href="/" className="block px-4 py-3 rounded-xl text-foreground hover:bg-foreground/5 transition-all font-medium">Home</Link>
               <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Leagues</div>
               {leagues.map((l) => (
-                <Link key={l.id} href={`/${l.id}`} className="block px-4 py-3 rounded-xl text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all">
+                <Link key={l.id} href={`/${l.id}`} className="flex items-center gap-3 px-4 py-3 rounded-xl text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all">
+                  {l.logo ? (
+                    <div className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden bg-background/40">
+                      <Image src={l.logo} alt="" width={28} height={28} className="w-full h-full object-contain" />
+                    </div>
+                  ) : null}
                   {l.shortName}
                 </Link>
               ))}

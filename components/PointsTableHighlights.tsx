@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Trophy, Medal } from "lucide-react";
 import { leagues } from "@/data/leagues";
 
@@ -36,9 +37,15 @@ const PointsTableHighlights = () => {
               className="rounded-2xl border border-glass-border bg-card/50 backdrop-blur-sm p-6 hover:border-primary/20 transition-all duration-500"
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
-                  <Trophy className="w-4 h-4 text-primary" />
-                </div>
+                {league.logo ? (
+                  <div className="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden bg-background/40 border border-glass-border">
+                    <Image src={league.logo} alt="" width={40} height={40} className="w-full h-full object-contain" />
+                  </div>
+                ) : (
+                  <div className="w-8 h-8 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                    <Trophy className="w-4 h-4 text-primary" />
+                  </div>
+                )}
                 <h3 className="font-display font-bold text-foreground text-lg">{league.shortName}</h3>
               </div>
 

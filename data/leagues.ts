@@ -23,6 +23,8 @@ export interface League {
   seoTitle?: string;
   /** Meta description for the league page */
   seoDescription?: string;
+  /** League logo path (e.g. /images/IPL-Logo.png) for nav, cards, etc. */
+  logo?: string;
 }
 
 export interface WomenLeague {
@@ -174,6 +176,7 @@ export const leagues: League[] = [
     ],
     seoTitle: "IPL 2026 Schedule: Match Dates, Points Table, Teams & Venues",
     seoDescription: "Check IPL 2026 full schedule, match fixtures, points table, teams, venues, and latest news. Stay updated with every IPL match.",
+    logo: "/images/IPL-Logo.png",
   },
   {
     id: "psl",
@@ -289,6 +292,7 @@ export const leagues: League[] = [
     ],
     seoTitle: "PSL 2026 Schedule: Match Dates, Points Table, Teams & Venues",
     seoDescription: "Explore PSL 2026 full schedule including match dates, points table, team squads, venues, and latest news.",
+    logo: "/images/PSL-Logo.png",
   },
   {
     id: "bbl",
@@ -318,6 +322,7 @@ export const leagues: League[] = [
     ],
     venues: [{ name: "Melbourne Cricket Ground", city: "Melbourne", capacity: "100,024", image: "mcg" }],
     faqs: [{ question: "When is the BBL season?", answer: "The BBL typically runs from December to February." }],
+    logo: "/images/BBL-Logo.png",
   },
   {
     id: "cpl",
@@ -345,6 +350,7 @@ export const leagues: League[] = [
     ],
     venues: [{ name: "Queen's Park Oval", city: "Port of Spain", capacity: "18,000", image: "dubai" }],
     faqs: [{ question: "When does CPL start?", answer: "CPL 2026 begins August 15, 2026." }],
+    logo: "/images/CPL-Logo.png",
   },
   {
     id: "sa20",
@@ -372,6 +378,7 @@ export const leagues: League[] = [
     ],
     venues: [{ name: "Newlands Cricket Ground", city: "Cape Town", capacity: "25,000", image: "mcg" }],
     faqs: [{ question: "What is SA20?", answer: "SA20 is South Africa's premier T20 cricket league." }],
+    logo: "/images/SA20-Logo.png",
   },
   {
     id: "ilt20",
@@ -399,6 +406,7 @@ export const leagues: League[] = [
     ],
     venues: [{ name: "Dubai International Stadium", city: "Dubai", capacity: "25,000", image: "dubai" }],
     faqs: [{ question: "Where is ILT20 played?", answer: "ILT20 is played in the United Arab Emirates." }],
+    logo: "/images/ILT-Logo.png",
   },
   {
     id: "bpl",
@@ -426,6 +434,7 @@ export const leagues: League[] = [
     ],
     venues: [{ name: "Sher-e-Bangla Stadium", city: "Dhaka", capacity: "26,000", image: "lahore" }],
     faqs: [{ question: "When does BPL start?", answer: "BPL 2026 starts February 1, 2026." }],
+    logo: "/images/BPL-Logo.png",
   },
   {
     id: "lpl",
@@ -453,6 +462,7 @@ export const leagues: League[] = [
     ],
     venues: [{ name: "Sher-e-Bangla Stadium", city: "Dhaka", capacity: "26,000", image: "lahore" }],
    faqs: [{ question: "When does LPL 2026 run?", answer: "LPL 2026 runs from July 8 to August 8, 2026." }],
+    logo: "/images/LPL-Logo.png",
   },
   {
     id: "mlc",
@@ -480,6 +490,7 @@ export const leagues: League[] = [
     ],
     venues: [{ name: "Sher-e-Bangla Stadium", city: "Dhaka", capacity: "26,000", image: "lahore" }],
    faqs: [{ question: "When is MLC 2026?", answer: "MLC 2026 is expected June–July 2026." }],
+    logo: "/images/MLC-Logo.png",
   },
   {
     id: "npl",
