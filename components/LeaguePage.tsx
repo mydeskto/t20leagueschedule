@@ -210,16 +210,16 @@ const LeaguePage = () => {
             )}
             <div className="glass-card overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="w-full min-w-0">
                 <thead>
                   <tr className="border-b border-glass-border">
-                    <th className="text-left p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">#</th>
-                    <th className="text-left p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Team</th>
-                    <th className="text-center p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">P</th>
-                    <th className="text-center p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">W</th>
-                    <th className="text-center p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">L</th>
-                    <th className="text-center p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">NRR</th>
-                    <th className="text-center p-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Pts</th>
+                    <th className="text-left px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider w-8 md:w-auto">#</th>
+                    <th className="text-left px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Team</th>
+                    <th className="text-center px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">P</th>
+                    <th className="text-center px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">W</th>
+                    <th className="text-center px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">L</th>
+                    <th className="text-center px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">NRR</th>
+                    <th className="text-center px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Pts</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -240,17 +240,17 @@ const LeaguePage = () => {
                         i < 2 ? "bg-primary/5" : ""
                       }`}
                     >
-                      <td className="p-4">
-                        <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
+                      <td className="px-1 py-2 md:px-3 md:py-4">
+                        <span className={`w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-[10px] md:text-xs font-bold ${
                           i === 0 ? "bg-primary text-primary-foreground" : "text-muted-foreground"
                         }`}>
                           {i + 1}
                         </span>
                       </td>
-                      <td className="p-4">
-                        <div className="flex items-center gap-3">
+                      <td className="px-1 py-2 md:px-3 md:py-4">
+                        <div className="flex items-center gap-2 md:gap-3">
                           {pointsLogo ? (
-                            <div className="w-9 h-9 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden">
+                            <div className="w-7 h-7 md:w-9 md:h-9 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden">
                               <Image
                                 src={pointsLogo.src}
                                 alt={entry.team}
@@ -260,14 +260,14 @@ const LeaguePage = () => {
                               />
                             </div>
                           ) : null}
-                          <span className="font-medium text-foreground">{entry.team}</span>
+                          <span className="hidden md:inline font-medium text-foreground">{entry.team}</span>
                         </div>
                       </td>
-                      <td className="p-4 text-center text-muted-foreground">{entry.played}</td>
-                      <td className="p-4 text-center text-foreground font-medium">{entry.won}</td>
-                      <td className="p-4 text-center text-muted-foreground">{entry.lost}</td>
-                      <td className="p-4 text-center text-muted-foreground">{entry.nrr}</td>
-                      <td className="p-4 text-center font-bold text-primary">{entry.points}</td>
+                      <td className="px-1 py-2 md:px-3 md:py-4 text-center text-muted-foreground text-xs md:text-sm">{entry.played}</td>
+                      <td className="px-1 py-2 md:px-3 md:py-4 text-center text-foreground font-medium text-xs md:text-sm">{entry.won}</td>
+                      <td className="px-1 py-2 md:px-3 md:py-4 text-center text-muted-foreground text-xs md:text-sm">{entry.lost}</td>
+                      <td className="px-1 py-2 md:px-3 md:py-4 text-center text-muted-foreground text-xs md:text-sm">{entry.nrr}</td>
+                      <td className="px-1 py-2 md:px-3 md:py-4 text-center font-bold text-primary text-xs md:text-sm">{entry.points}</td>
                     </motion.tr>
                     );
                   })}
