@@ -174,8 +174,8 @@ const HeroSection = () => {
           className="mt-20 grid grid-cols-3 gap-6 max-w-lg mx-auto"
         >
           {[
-            { value: "8+", label: "Leagues", icon: Globe },
-            { value: "200+", label: "Matches", icon: Zap },
+            { value: "24+", label: "Leagues", icon: Globe },
+            { value: "300+", label: "Matches", icon: Zap },
             { value: "50+", label: "Teams", icon: Trophy },
           ].map((stat) => (
             <div key={stat.label} className="group">

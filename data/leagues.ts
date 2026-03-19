@@ -78,7 +78,7 @@ export interface FAQ {
 
 export const leagues: League[] = [
   {
-    id: "ipl",
+    id: "ipl-schedule",
     name: "Indian Premier League",
     shortName: "IPL",
     country: "India",
@@ -181,7 +181,7 @@ export const leagues: League[] = [
     logo: "/images/IPL-Logo.png",
   },
   {
-    id: "psl",
+    id: "psl-schedule",
     name: "Pakistan Super League",
     shortName: "PSL",
     country: "Pakistan",
@@ -296,8 +296,8 @@ export const leagues: League[] = [
     seoDescription: "Explore PSL 2026 full schedule including match dates, points table, team squads, venues, and latest news.",
     logo: "/images/PSL-Logo.png",
   },
-  {
-    id: "bbl",
+  { 
+    id: "bbl-schedule",
     name: "Big Bash League",
     shortName: "BBL",
     country: "Australia",
@@ -329,7 +329,7 @@ export const leagues: League[] = [
     logo: "/images/BBL-Logo.png",
   },
   {
-    id: "cpl",
+    id: "cpl-schedule",
     name: "Caribbean Premier League",
     shortName: "CPL",
     country: "West Indies",
@@ -359,7 +359,7 @@ export const leagues: League[] = [
     logo: "/images/CPL-Logo.png",
   },
   {
-    id: "sa20",
+    id: "sa20-schedule",
     name: "SA20",
     shortName: "SA20",
     country: "South Africa",
@@ -389,7 +389,7 @@ export const leagues: League[] = [
     logo: "/images/SA20-Logo.png",
   },
   {
-    id: "ilt20",
+    id: "ilt20-schedule",
     name: "International League T20",
     shortName: "ILT20",
     country: "UAE",
@@ -419,7 +419,7 @@ export const leagues: League[] = [
     logo: "/images/ILT-Logo.png",
   },
   {
-    id: "bpl",
+    id: "bpl-schedule",
     name: "Bangladesh Premier League",
     shortName: "BPL",
     country: "Bangladesh",
@@ -449,7 +449,7 @@ export const leagues: League[] = [
     logo: "/images/BPL-Logo.png",
   },
   {
-    id: "lpl",
+    id: "lpl-schedule",
     name: "Lanka Premier League",
     shortName: "LPL",
     country: "Sri Lanka",
@@ -479,7 +479,7 @@ export const leagues: League[] = [
     logo: "/images/LPL-Logo.png",
   },
   {
-    id: "mlc",
+    id: "mlc-schedule",
     name: "Major League Cricket",
     shortName: "MLC",
     country: "USA",
@@ -509,7 +509,7 @@ export const leagues: League[] = [
     logo: "/images/MLC-Logo.png",
   },
   {
-    id: "npl",
+    id: "npl-schedule",
     name: "Nepal Premier League",
     shortName: "NPL",
     country: "Nepal",
@@ -539,7 +539,7 @@ export const leagues: League[] = [
     logo: "/images/NPL-Logo.png",
   },
   {
-    id: "the-hundred",
+    id: "the-hundred-schedule",
     name: "The Hundred",
     shortName: "100",
     country: "England",
