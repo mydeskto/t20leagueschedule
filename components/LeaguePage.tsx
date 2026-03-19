@@ -121,7 +121,7 @@ const LeaguePage = () => {
                 </div>
               )}
               <h1 className="text-4xl md:text-6xl font-display font-extrabold text-foreground">
-                {leagueH1[league.id] ?? league.name}
+                { league.name}
               </h1>
             </div>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">

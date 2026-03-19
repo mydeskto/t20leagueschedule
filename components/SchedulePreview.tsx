@@ -1,15 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Clock, Filter } from "lucide-react";
+import { ArrowRight, Calendar, MapPin, Clock, Filter } from "lucide-react";
 import { leagues } from "@/data/leagues";
 
 const SchedulePreview = () => {
   const [activeLeague, setActiveLeague] = useState("all");
+  const [visibleCount, setVisibleCount] = useState(5);
 
   const allMatches = leagues
     .flatMap((l) => l.schedule.map((m) => ({ ...m, league: l.shortName, leagueId: l.id })))
     .filter((m) => activeLeague === "all" || m.leagueId === activeLeague);
+
+  useEffect(() => {
+    setVisibleCount(5);
+  }, [activeLeague]);
+
+  const visibleMatches = allMatches.slice(0, visibleCount);
+  const canShowMore = allMatches.length > visibleCount;
 
   return (
     <section id="schedule" className="section-padding relative">
@@ -60,7 +68,7 @@ const SchedulePreview = () => {
 
         {/* Schedule rows */}
         <div className="space-y-3">
-          {allMatches.map((match, i) => (
+          {visibleMatches.map((match, i) => (
             <motion.div
               key={match.id}
               initial={{ opacity: 0, x: -20 }}
@@ -92,6 +100,18 @@ const SchedulePreview = () => {
             </motion.div>
           ))}
         </div>
+
+        {canShowMore ? (
+          <div className="mt-6 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setVisibleCount((c) => c + 5)}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
+            >
+              See more <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        ) : null}
       </div>
     </section>
   );

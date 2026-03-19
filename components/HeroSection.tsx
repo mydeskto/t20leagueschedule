@@ -3,12 +3,61 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Play, Zap, Globe, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Autoplay from "embla-carousel-autoplay";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 import  stadiumHero from "@/public/images/stadium-hero.jpg"
 import cricketBall from "@/public/images/cricket-ball.png"
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const autoplayRef = useRef(
+    Autoplay(
+      {
+        delay: 5000,
+        stopOnInteraction: false,
+      },
+    ),
+  );
+
+  const slides = [
+    {
+      id: "all",
+      badge: "Schedules & Fixtures for All T20 Cricket Leagues",
+      titleTop: "All Cricket Leagues",
+      titleAccent: "in One Place",
+      description:
+        "Stay updated with all T20 cricket leagues worldwide. Check match schedules, points tables, team squads, and venues — all in one place.",
+      primaryHref: "#leagues",
+      primaryLabel: "Explore Leagues",
+      secondaryHref: "#schedule",
+      secondaryLabel: "View Schedule",
+    },
+    {
+      id: "ipl",
+      badge: "IPL 2026 Schedule, Points Table & Teams",
+      titleTop: "IPL 2026",
+      titleAccent: "Complete Coverage",
+      description:
+        "Follow the full IPL 2026 season with fixtures, points table updates, teams, and venues. Everything you need for the Indian Premier League.",
+      primaryHref: "/ipl",
+      primaryLabel: "Explore IPL",
+      secondaryHref: "/ipl#schedule",
+      secondaryLabel: "IPL Schedule",
+    },
+    {
+      id: "psl",
+      badge: "PSL 2026 Schedule, Points Table & Teams",
+      titleTop: "PSL 2026",
+      titleAccent: "Complete Coverage",
+      description:
+        "Track PSL 2026 with fixtures, standings, teams, and venues. Get the latest Pakistan Super League updates in one place.",
+      primaryHref: "/psl",
+      primaryLabel: "Explore PSL",
+      secondaryHref: "/psl#schedule",
+      secondaryLabel: "PSL Schedule",
+    },
+  ] as const;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,56 +107,63 @@ const HeroSection = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 text-center max-w-5xl mx-auto px-4 pt-20">
+      <div className="relative z-10 text-center  mx-auto px-4 pt-20">
         <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 backdrop-blur-sm px-5 py-2.5 rounded-full mb-8"
-        >
-          <span className="live-dot" />
-          <span className="text-sm font-medium text-primary">Schedules & Fixtures for All T20 Cricket Leagues</span>
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-extrabold leading-[1.05] mb-6 tracking-tight"
+          transition={{ duration: 0.7, delay: 0.25 }}
         >
-          All Cricket Leagues
-          <br />
-          <span className="gradient-text">in One Place</span>
-        </motion.h1>
+          <Carousel
+            className="w-full"
+            opts={{ loop: true, align: "center" }}
+            plugins={[autoplayRef.current]}
+          >
+            <CarouselContent className="ml-0">
+              {slides.map((s) => (
+                <CarouselItem key={s.id} className="pl-0">
+                  <div className="flex flex-col items-center">
+                    <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 backdrop-blur-sm px-5 py-2.5 rounded-full mb-8">
+                      <span className="text-sm font-medium text-primary">{s.badge}</span>
+                    </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
-        >
-          Stay updated with all T20 cricket leagues worldwide.
-          Check match schedules, points tables, team squads, and venues — all in one place.
-        </motion.p>
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-extrabold leading-[1.05] mb-6 tracking-tight">
+                      {s.titleTop}
+                      <br />
+                      <span className="gradient-text">{s.titleAccent}</span>
+                    </h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-display font-semibold px-8 h-12 text-base shadow-glow rounded-xl">
-            <a href="#leagues">
-              Explore Leagues
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </a>
-          </Button>
-          <Button asChild size="lg" variant="outline" className="border-foreground/10 text-foreground hover:bg-foreground/5 font-display font-semibold px-8 h-12 text-base rounded-xl">
-            <a href="#schedule">
-              <Play className="mr-2 w-4 h-4" />
-              View Schedule
-            </a>
-          </Button>
+                    <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
+                      {s.description}
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                      <Button
+                        asChild
+                        size="lg"
+                        className="bg-primary text-primary-foreground hover:bg-primary/90 font-display font-semibold px-8 h-12 text-base shadow-glow rounded-xl"
+                      >
+                        <a href={s.primaryHref}>
+                          {s.primaryLabel}
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </a>
+                      </Button>
+                      <Button
+                        asChild
+                        size="lg"
+                        variant="outline"
+                        className="border-foreground/10 text-foreground hover:bg-foreground/5 font-display font-semibold px-8 h-12 text-base rounded-xl"
+                      >
+                        <a href={s.secondaryHref}>
+                          <Play className="mr-2 w-4 h-4" />
+                          {s.secondaryLabel}
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </motion.div>
 
         {/* Stats */}

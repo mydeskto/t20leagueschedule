@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Calendar, TrendingUp } from "lucide-react";
-import { leagues, womenLeagues } from "@/data/leagues";
+import { leagues, womenLeagues, DomesticLeagues } from "@/data/leagues";
 import gsap from "gsap";
 
 const leagueEmojis: Record<string, string> = {
@@ -124,6 +124,66 @@ const FeaturedLeagues = () => {
                 </div>
               </div>
             </Link>
+          ))}
+        </div>
+
+        {/* Domestic T20 Leagues */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mt-20 mb-10"
+        >
+          <div className="inline-flex items-center gap-2 bg-foreground/5 border border-glass-border px-4 py-1.5 rounded-full mb-5">
+            <span className="text-xs font-semibold text-foreground uppercase tracking-wider">Domestic T20</span>
+          </div>
+          <h3 className="text-2xl md:text-4xl font-display font-bold mb-3">
+            Domestic T20 Leagues
+          </h3>
+          <p className="text-muted-foreground max-w-xl mx-auto text-sm">
+            Key domestic T20 tournaments and their 2026 windows
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+          {DomesticLeagues.map((league) => (
+            <div
+              key={league.id}
+              className="league-card group relative overflow-hidden rounded-2xl border border-glass-border bg-card/50 backdrop-blur-sm p-6 flex flex-col opacity-0 transition-all duration-500 hover:border-primary/30 hover:shadow-glow hover:-translate-y-1"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="relative z-10">
+                <div className="relative z-10">
+                <div className="flex items-start justify-between mb-5">
+                  {league.logo ? (
+                    <div className="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden border border-glass-border">
+                      <Image src={league.logo} alt="" width={48} height={48} className="w-full h-full object-contain" />
+                    </div>
+                  ) : (
+                    <span className="text-3xl">{leagueEmojis[league.id] || "🏏"}</span>
+                  )}
+                  <span className="text-[10px] font-semibold text-muted-foreground bg-foreground/5 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    {league.season}
+                  </span>
+                </div>
+                </div>
+
+                <h3 className="font-display font-bold text-xl text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
+                  {league.shortName}
+                </h3>
+                <p className="text-sm text-muted-foreground mb-3">{league.name}</p>
+                <p className="text-xs text-muted-foreground mb-4">{league.country}</p>
+
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <Calendar className="w-3.5 h-3.5" />
+                  <span>
+                    {league.startDate} – {league.endDate}
+                  </span>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
 

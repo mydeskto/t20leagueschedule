@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search, ChevronDown } from "lucide-react";
 import { leagues } from "@/data/leagues";
 import Image from "next/image";
+import FaqDialogButton from "@/components/FaqDialogButton";
 
 import logo from "@/public/images/T20 League Schedule.png"
 
@@ -34,16 +35,18 @@ const Navbar = () => {
   );
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-background/90 backdrop-blur-2xl border-b border-glass-border shadow-lg shadow-background/50"
-          : "bg-transparent"
-      }`}
-    >
+    <>
+      <FaqDialogButton />
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? "bg-background/90 backdrop-blur-2xl border-b border-glass-border shadow-lg shadow-background/50"
+            : "bg-transparent"
+        }`}
+      >
       <div className="container-narrow flex items-center justify-between h-18 px-4 md:px-8 py-4">
         <Link href="/" className="flex items-center gap-2.5 group">
           <Image src={logo.src} alt="Logo" width={100} height={100} className="w-30 h-60 object-contain" />
@@ -99,9 +102,6 @@ const Navbar = () => {
           </div>
           <Link href="/venues" className="px-4 py-2 rounded-xl text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all duration-300">
             Venues
-          </Link>
-          <Link href="/faqs" className="px-4 py-2 rounded-xl text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all duration-300">
-            FAQ
           </Link>
         </div>
 
@@ -184,12 +184,12 @@ const Navbar = () => {
                 </Link>
               ))}
               <Link href="/venues" className="block px-4 py-3 rounded-xl text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all">Venues</Link>
-              <Link href="/faqs" className="block px-4 py-3 rounded-xl text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all">FAQ</Link>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+      </motion.nav>
+    </>
   );
 };
 
