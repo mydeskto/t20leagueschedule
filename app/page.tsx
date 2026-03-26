@@ -14,7 +14,6 @@ import { globalFaqs } from "@/data/leagues";
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
       <HeroSection />
       <FeaturedLeagues />
       <UpcomingMatches />
@@ -22,7 +21,6 @@ export default function HomePage() {
       <PointsTableHighlights />
       <VenuesSection />
       <FAQSection faqs={globalFaqs} />
-      <Footer />
     </div>
   );
 }

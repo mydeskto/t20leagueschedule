@@ -43,7 +43,7 @@ const Navbar = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-background/90 backdrop-blur-2xl border-b border-glass-border shadow-lg shadow-background/50"
+            ? "bg-transparant"
             : "bg-transparent"
         }`}
       >
@@ -78,7 +78,7 @@ const Navbar = () => {
                   transition={{ duration: 0.2 }}
                   className="absolute top-full left-0 pt-2"
                 >
-                  <div className="bg-card/95 backdrop-blur-2xl border border-glass-border rounded-2xl p-2 min-w-[220px] max-h-[70vh] overflow-y-auto shadow-2xl shadow-background/60">
+                  <div className="bg-card/95 backdrop-blur-2xl border border-glass-border rounded-2xl p-2 min-w-[260px] max-h-[70vh] overflow-y-auto shadow-2xl shadow-background/60">
                     {leagues.map((league) => (
                       <Link
                         key={league.id}

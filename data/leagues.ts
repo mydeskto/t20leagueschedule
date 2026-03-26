@@ -10,6 +10,7 @@ export interface League {
   startDate: string;
   endDate: string;
   status: LeagueStatus;
+  gradient?: string;
   color: string;
   teams: Team[];
   schedule: Match[];
@@ -87,6 +88,7 @@ export const leagues: League[] = [
     startDate: "28 March 2026",
     endDate: "31 May 2026",
     status: "Confirmed",
+    gradient: 'from-yellow-400 via-orange-500 to-purple-600',
     color: "#3b82f6",
     teams: [
       { name: "Royal Challengers Bengaluru", shortName: "RCB", color: "#e11d48" },
@@ -190,6 +192,7 @@ export const leagues: League[] = [
     startDate: "26 March 2026",
     endDate: "3 May 2026",
     status: "Confirmed",
+    gradient: 'from-red-500 via-rose-600 to-purple-700',
     color: "#22c55e",
     teams: [
       { name: "Islamabad United", shortName: "ISU", color: "#e11d48" },
@@ -308,6 +311,7 @@ export const leagues: League[] = [
     seoTitle: "BBL 2026 Schedule – Big Bash League Fixtures & Teams",
     seoDescription: "Check BBL 2026 full schedule with match dates, team squads, points table, and venues. Stay updated with every Big Bash League match in December 2026.",
     status: "Window based",
+    gradient: 'from-orange-500 via-red-600 to-pink-600',
     color: "#f59e0b",
     teams: [
       { name: "Sydney Sixers", shortName: "SYS", color: "#e11d48" },
@@ -340,6 +344,7 @@ export const leagues: League[] = [
     startDate: "Aug 2026 (expected)",
     endDate: "Sep 2026",
     status: "Window based",
+    gradient: 'from-yellow-400 via-amber-500 to-violet-600',
     color: "#8b5cf6",
     teams: [
       { name: "Trinbago Knight Riders", shortName: "TKR", color: "#3b225f" },
@@ -370,6 +375,7 @@ export const leagues: League[] = [
     startDate: "Jan 2026 (expected)",
     endDate: "Feb 2026",
     status: "Window based",
+    gradient: 'from-orange-400 via-yellow-500 to-green-600',
     color: "#ef4444",
     teams: [
       { name: "MI Cape Town", shortName: "MICT", color: "#004ba0" },

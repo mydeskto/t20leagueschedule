@@ -11,11 +11,11 @@ export const metadata = {
 export default function FAQsPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+     
       <main className="pt-24">
         <FAQSection faqs={globalFaqs} title="Frequently Asked Questions" />
       </main>
-      <Footer />
+  
     </div>
   );
 }

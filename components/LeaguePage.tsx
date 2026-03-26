@@ -97,10 +97,28 @@ const LeaguePage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+
 
       {/* Hero */}
       <section className="relative pt-16 pb-8 min-h-[50vh] flex items-end overflow-hidden">
+        {/* Animated Background Layers */}
+        <div className="absolute inset-0">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            className={`absolute top-[-200px] right-[-100px] w-[700px] h-[700px] rounded-full opacity-90 bg-gradient-to-br ${league.gradient}`}
+            style={{ filter: `blur(120px)` }}
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className={`absolute bottom-[-100px] left-[-100px] w-[500px] h-[500px] rounded-full opacity-90 bg-gradient-to-tr ${league.gradient}`}
+            style={{ filter: `blur(100px)` }}
+          />
+        </div>
+
         <div className="absolute inset-0">
           <Image src={stadiumHero.src} alt="Stadium" width={1000} height={1000} className="w-full h-full object-cover ken-burns opacity-30" />
         </div>
@@ -121,7 +139,7 @@ const LeaguePage = () => {
                 </div>
               )}
               <h1 className="text-4xl md:text-6xl font-display font-extrabold text-foreground">
-                { league.name}
+                {league.name}
               </h1>
             </div>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -139,18 +157,17 @@ const LeaguePage = () => {
       </section>
 
       {/* Tabs */}
-      <div className="sticky top-16 z-30 bg-background/80 backdrop-blur-xl border-b border-glass-border">
+      <div className="sticky top-16 z-30 bg-transparant backdrop-blur-xl border-b border-glass-border">
         <div className="container-narrow px-4 md:px-8">
           <div className="flex gap-1 overflow-x-auto scrollbar-hide">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-5 py-4 text-sm font-medium whitespace-nowrap transition-all border-b-2 ${
-                  activeTab === tab
-                    ? "border-primary text-primary"
+                className={`px-5 py-4 text-sm font-medium whitespace-nowrap transition-all border-b-2 ${activeTab === tab
+                    ? "border-primary text-primary "
                     : "border-transparent text-muted-foreground hover:text-foreground"
-                }`}
+                  }`}
               >
                 {tab}
               </button>
@@ -209,71 +226,69 @@ const LeaguePage = () => {
               </div>
             )}
             <div className="glass-card overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-0">
-                <thead>
-                  <tr className="border-b border-glass-border">
-                    <th className="text-left px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider w-8 md:w-auto">#</th>
-                    <th className="text-left px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Team</th>
-                    <th className="text-center px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">P</th>
-                    <th className="text-center px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">W</th>
-                    <th className="text-center px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">L</th>
-                    <th className="text-center px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">NRR</th>
-                    <th className="text-center px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Pts</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {pointsTableData.map((entry, i) => {
-                    const pointsLogo =
-                      league.id === "ipl"
-                        ? iplTeamLogos[entry.team]
-                        : league.id === "psl"
-                          ? pslTeamLogos[entry.team]
-                          : undefined;
-                    return (
-                    <motion.tr
-                      key={entry.team}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: i * 0.08 }}
-                      className={`border-b border-glass-border/50 transition-colors hover:bg-glass ${
-                        i < 2 ? "bg-primary/5" : ""
-                      }`}
-                    >
-                      <td className="px-1 py-2 md:px-3 md:py-4">
-                        <span className={`w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-[10px] md:text-xs font-bold ${
-                          i === 0 ? "bg-primary text-primary-foreground" : "text-muted-foreground"
-                        }`}>
-                          {i + 1}
-                        </span>
-                      </td>
-                      <td className="px-1 py-2 md:px-3 md:py-4">
-                        <div className="flex items-center gap-2 md:gap-3">
-                          {pointsLogo ? (
-                            <div className="w-7 h-7 md:w-9 md:h-9 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden">
-                              <Image
-                                src={pointsLogo.src}
-                                alt={entry.team}
-                                width={36}
-                                height={36}
-                                className="w-full h-full object-contain"
-                              />
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-0">
+                  <thead>
+                    <tr className="border-b border-glass-border">
+                      <th className="text-left px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider w-8 md:w-auto">#</th>
+                      <th className="text-left px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Team</th>
+                      <th className="text-center px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">P</th>
+                      <th className="text-center px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">W</th>
+                      <th className="text-center px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">L</th>
+                      <th className="text-center px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">NRR</th>
+                      <th className="text-center px-1 py-2 md:px-3 md:py-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Pts</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {pointsTableData.map((entry, i) => {
+                      const pointsLogo =
+                        league.id === "ipl"
+                          ? iplTeamLogos[entry.team]
+                          : league.id === "psl"
+                            ? pslTeamLogos[entry.team]
+                            : undefined;
+                      return (
+                        <motion.tr
+                          key={entry.team}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: i * 0.08 }}
+                          className={`border-b border-glass-border/50 transition-colors hover:bg-glass ${i < 2 ? "bg-primary/5" : ""
+                            }`}
+                        >
+                          <td className="px-1 py-2 md:px-3 md:py-4">
+                            <span className={`w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-[10px] md:text-xs font-bold ${i === 0 ? "bg-primary text-primary-foreground" : "text-muted-foreground"
+                              }`}>
+                              {i + 1}
+                            </span>
+                          </td>
+                          <td className="px-1 py-2 md:px-3 md:py-4">
+                            <div className="flex items-center gap-2 md:gap-3">
+                              {pointsLogo ? (
+                                <div className="w-7 h-7 md:w-9 md:h-9 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden">
+                                  <Image
+                                    src={pointsLogo.src}
+                                    alt={entry.team}
+                                    width={36}
+                                    height={36}
+                                    className="w-full h-full object-contain"
+                                  />
+                                </div>
+                              ) : null}
+                              <span className="hidden md:inline font-medium text-foreground">{entry.team}</span>
                             </div>
-                          ) : null}
-                          <span className="hidden md:inline font-medium text-foreground">{entry.team}</span>
-                        </div>
-                      </td>
-                      <td className="px-1 py-2 md:px-3 md:py-4 text-center text-muted-foreground text-xs md:text-sm">{entry.played}</td>
-                      <td className="px-1 py-2 md:px-3 md:py-4 text-center text-foreground font-medium text-xs md:text-sm">{entry.won}</td>
-                      <td className="px-1 py-2 md:px-3 md:py-4 text-center text-muted-foreground text-xs md:text-sm">{entry.lost}</td>
-                      <td className="px-1 py-2 md:px-3 md:py-4 text-center text-muted-foreground text-xs md:text-sm">{entry.nrr}</td>
-                      <td className="px-1 py-2 md:px-3 md:py-4 text-center font-bold text-primary text-xs md:text-sm">{entry.points}</td>
-                    </motion.tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
+                          </td>
+                          <td className="px-1 py-2 md:px-3 md:py-4 text-center text-muted-foreground text-xs md:text-sm">{entry.played}</td>
+                          <td className="px-1 py-2 md:px-3 md:py-4 text-center text-foreground font-medium text-xs md:text-sm">{entry.won}</td>
+                          <td className="px-1 py-2 md:px-3 md:py-4 text-center text-muted-foreground text-xs md:text-sm">{entry.lost}</td>
+                          <td className="px-1 py-2 md:px-3 md:py-4 text-center text-muted-foreground text-xs md:text-sm">{entry.nrr}</td>
+                          <td className="px-1 py-2 md:px-3 md:py-4 text-center font-bold text-primary text-xs md:text-sm">{entry.points}</td>
+                        </motion.tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </motion.div>
         )}
@@ -283,11 +298,11 @@ const LeaguePage = () => {
             {league.teams.map((team, i) => {
               const isPsl = league.id === "psl";
               const logo =
-              league.id === "ipl"
-                ? iplTeamLogos[team.name]
-                : isPsl
-                  ? pslTeamLogos[team.name]
-                  : undefined;
+                league.id === "ipl"
+                  ? iplTeamLogos[team.name]
+                  : isPsl
+                    ? pslTeamLogos[team.name]
+                    : undefined;
 
               return (
                 <motion.div
