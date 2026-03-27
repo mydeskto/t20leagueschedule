@@ -14,6 +14,7 @@ import {
   Zap
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 const slides = [
   {
@@ -29,11 +30,12 @@ const slides = [
     prize: '₹20 Crore', // Winner prize (2025 confirmed; 2026 not officially announced yet)
     gradient: 'from-yellow-400 via-orange-500 to-purple-600',
     accentColor: '#f59e0b',
+    logo: "/images/IPL-Logo.png"
   },
   {
     id: 2,
     league: 'Big Bash League',
-    shortName: 'BBL 2025-26',
+    shortName: 'BBL 2026',
     tagline: 'Summer Cricket Festival',
     description:
       'Australia premier T20 spectacle delivering explosive cricket action under the summer sun',
@@ -44,6 +46,7 @@ const slides = [
     gradient: 'from-orange-500 via-red-600 to-pink-600',
     glowColor: 'rgba(249, 115, 22, 0.5)',
     accentColor: '#f97316',
+    logo: "/images/BBL-Logo.png",
   },
   {
     id: 3,
@@ -59,6 +62,7 @@ const slides = [
     gradient: 'from-red-500 via-rose-600 to-purple-700',
     glowColor: 'rgba(239, 68, 68, 0.5)',
     accentColor: '#ef4444',
+    logo: "/images/PSL-Logo.png",
   },
   {
     id: 4,
@@ -74,6 +78,7 @@ const slides = [
     gradient: 'from-yellow-400 via-amber-500 to-violet-600',
     glowColor: 'rgba(234, 179, 8, 0.5)',
     accentColor: '#eab308',
+    logo: "/images/CPL-Logo.png",
   },
   {
     id: 5,
@@ -89,6 +94,7 @@ const slides = [
     gradient: 'from-orange-400 via-yellow-500 to-green-600',
     glowColor: 'rgba(249, 115, 22, 0.5)',
     accentColor: '#f97316',
+    logo: "/images/SA20-Logo.png",
   },
 ];
 
@@ -231,8 +237,46 @@ export default function HeroSection() {
         {/* <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(10,10,15,0.7)_100%)]" /> */}
       </div>
 
+
+      <div className='w-full flex justify-center items-center'>
+        {/* Featured Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className=" inline-flex items-center  gap-2 px-4 py-2 mt-22 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 mb-4"
+        >
+          {/* <span
+            className="w-2 h-2 rounded-full animate-pulse"
+            style={{ backgroundColor: slide.accentColor }}
+          /> */}
+
+          <h1 className="text-sm md:text-lg font-medium text-center text-slate-300 italic">Schedules & Fixtures for  <span className={`text-lg bg-gradient-to-r ${slide.gradient} bg-clip-text text-transparent mb-4 inline`}>
+            All T20 Cricket Leagues
+          </span>
+          </h1>
+        </motion.div>
+
+      </div>
+      <div className='w-full flex justify-center items-center'>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className=" inline-flex items-center  gap-2 px-4 py-2  rounded-full  backdrop-blur-xl  mb-4"
+        >
+          {/* <span
+            className="w-2 h-2 rounded-full animate-pulse"
+            style={{ backgroundColor: slide.accentColor }}
+          /> */}
+          <p className='text-white text-center'>Stay updated with all T20 cricket leagues worldwide. Check match schedules, points tables, team squads, and venues — all in one place.</p>
+
+        </motion.div>
+      </div>
+
       {/* Main Content */}
-      <div className="relative  z-10 w-full px-4 sm:px-6 lg:px-8 xl:px-12 pt-28 pb-2">
+      <div className="relative  z-10 w-full px-4 sm:px-6 lg:px-8  pb-2">
+
         <AnimatePresence mode="popLayout" >
           <motion.div
             key={currentSlide}
@@ -246,19 +290,7 @@ export default function HeroSection() {
 
               {/* Left Content */}
               <div className="flex-1 text-center lg:text-left w-full">
-                {/* Featured Badge */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 mb-4"
-                >
-                  <span
-                    className="w-2 h-2 rounded-full animate-pulse"
-                    style={{ backgroundColor: slide.accentColor }}
-                  />
-                  <span className="text-sm font-medium text-slate-300">Featured Tournament</span>
-                </motion.div>
+
 
                 {/* League Name */}
                 <motion.div
@@ -266,12 +298,14 @@ export default function HeroSection() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-1 leading-tight">
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-1 leading-tight">
                     {slide.league.split(' ').slice(0, -1).join(' ')}
-                  </h1>
-                  <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r ${slide.gradient} bg-clip-text text-transparent mb-4`}>
-                    {slide.league.split(' ').slice(-1)}
-                  </h1>
+                    <br />
+                    <span className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r ${slide.gradient} bg-clip-text text-transparent mb-4`}>
+                      {slide.league.split(' ').slice(-1)}
+                    </span>
+                  </h2>
+
                 </motion.div>
 
                 {/* Short Name & Tagline */}
@@ -373,9 +407,13 @@ export default function HeroSection() {
                   <div className="relative p-6 sm:p-8 rounded-3xl bg-white/5 backdrop-blur-2xl border border-white/10 overflow-hidden">
                     {/* Card Header */}
                     <div className="flex items-center justify-between mb-4">
-                      <div>
-                        <p className="text-slate-400 text-sm mb-1">Tournament Series</p>
-                        <h3 className="text-xl sm:text-1xl font-bold text-white">{slide.shortName}</h3>
+                      <div className='flex items-center justify-center gap-2'>
+                        <Image src={slide.logo} width={60} height={60} alt='league image'></Image>
+                        <div>
+                          <p className="text-slate-400 text-sm mb-1">Tournament Series</p>
+                          <h3 className="text-xl sm:text-1xl font-bold text-white">{slide.shortName}</h3>
+                        </div>
+
                       </div>
                       <div
                         className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br ${slide.gradient} flex items-center justify-center`}

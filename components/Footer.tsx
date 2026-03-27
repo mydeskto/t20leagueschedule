@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { leagues } from "@/data/leagues";
 import { ArrowRight } from "lucide-react";
+import logo from "@/public/images/T20 League Schedule.png"
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -11,12 +13,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center">
-                <span className="font-display font-bold text-primary text-sm">CL</span>
-              </div>
-              <span className="font-display font-bold text-lg text-foreground tracking-tight">CricLeagues</span>
-            </div>
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <Image src={logo.src} alt="Logo" width={100} height={100} className="w-30 h-20 object-contain" />
+
+            </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Your ultimate destination for cricket league schedules, scores, and standings worldwide.
             </p>
@@ -76,11 +76,14 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-glass-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} CricLeagues. All rights reserved.
+            © {new Date().getFullYear()} t20leagueschedule. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors duration-300">Privacy</a>
             <a href="#" className="hover:text-foreground transition-colors duration-300">Terms</a>
+            <a href="#" className="hover:text-foreground transition-colors duration-300">About</a>
+            <a href="#" className="hover:text-foreground transition-colors duration-300">Contact Us</a>
+            <a href="#" className="hover:text-foreground transition-colors duration-300">Disclaimer</a>
           </div>
         </div>
       </div>

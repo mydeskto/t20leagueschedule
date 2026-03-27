@@ -90,38 +90,41 @@ const FeaturedLeagues = () => {
             <Link
               key={league.id}
               href={`/${league.id}`}
-              className="league-card group relative overflow-hidden rounded-2xl border border-glass-border bg-card/50 backdrop-blur-sm p-6 flex flex-col opacity-0 transition-all duration-500 hover:border-primary/30 hover:shadow-glow hover:-translate-y-1"
+              className="league-card group relative overflow-hidden rounded-2xl border border-glass-border bg-card/50 backdrop-blur-sm p-6 flex flex-col opacity-0 transition-all duration-500 hover:border-orange-400/60 hover:shadow-[0_22px_60px_-28px_rgba(34,197,94,0.55),0_0_45px_rgba(251,146,60,0.22)] hover:-translate-y-1"
             >
               {/* Hover gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 via-yellow-500/10 to-green-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative z-10">
-                <div className="flex items-start justify-between mb-5">
-                  {league.logo ? (
-                    <div className="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden border border-glass-border">
-                      <Image src={league.logo} alt="" width={48} height={48} className="w-full h-full object-contain" />
-                    </div>
-                  ) : (
-                    <span className="text-3xl">{leagueEmojis[league.id] || "🏏"}</span>
-                  )}
-                  <span className="text-[10px] font-semibold text-muted-foreground bg-foreground/5 px-2.5 py-1 rounded-full uppercase tracking-wider">
-                    {league.season}
-                  </span>
+              <div className="flex items-start justify-between mb-5">
+                {league.logo ? (
+                <div className="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden border border-glass-border">
+                  <Image src={league.logo} alt="" width={48} height={48} className="w-full h-full object-contain" />
                 </div>
+                ) : (
+                <span className="text-3xl">{leagueEmojis[league.id] || "🏏"}</span>
+                )}
+                <span className="text-[10px] font-semibold text-muted-foreground bg-foreground/5 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                {league.season}
+                </span>
+              </div>
+              
+              <h3 className={`text-lg bg-gradient-to-r ${league.gradient} bg-clip-text text-transparent mb-4 inline`}>
+          {league.shortName}
+          </h3>
+              {/* <h3 className="font-display font-bold text-xl text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
+                
+              </h3> */}
+              <p className="text-sm text-muted-foreground mb-5">{league.name}</p>
 
-                <h3 className="font-display font-bold text-xl text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
-                  {league.shortName}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-5">{league.name}</p>
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <Calendar className="w-3.5 h-3.5" />
+                <span>{league.startDate}</span>
+              </div>
 
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <Calendar className="w-3.5 h-3.5" />
-                  <span>{league.startDate}</span>
-                </div>
-
-                <div className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                  Explore <ArrowRight className="w-4 h-4" />
-                </div>
+              <div className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                Explore <ArrowRight className="w-4 h-4" />
+              </div>
               </div>
             </Link>
           ))}
@@ -150,9 +153,9 @@ const FeaturedLeagues = () => {
           {DomesticLeagues.map((league) => (
             <div
               key={league.id}
-              className="league-card group relative overflow-hidden rounded-2xl border border-glass-border bg-card/50 backdrop-blur-sm p-6 flex flex-col opacity-0 transition-all duration-500 hover:border-primary/30 hover:shadow-glow hover:-translate-y-1"
+              className="league-card group relative overflow-hidden rounded-2xl border border-glass-border bg-card/50 backdrop-blur-sm p-6 flex flex-col opacity-0 transition-all duration-500 hover:border-orange-400/60 hover:shadow-[0_22px_60px_-28px_rgba(34,197,94,0.55),0_0_45px_rgba(251,146,60,0.22)] hover:-translate-y-1"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 via-yellow-500/10 to-green-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative z-10">
                 <div className="relative z-10">
@@ -210,9 +213,9 @@ const FeaturedLeagues = () => {
           {womenLeagues.map((league) => (
             <div
               key={league.id}
-              className="league-card group relative overflow-hidden rounded-2xl border border-glass-border bg-card/50 backdrop-blur-sm p-6 flex flex-col opacity-0 transition-all duration-500 hover:border-accent/30 hover:shadow-glow hover:-translate-y-1"
+              className="league-card group relative overflow-hidden rounded-2xl border border-glass-border bg-card/50 backdrop-blur-sm p-6 flex flex-col opacity-0 transition-all duration-500 hover:border-orange-400/60 hover:shadow-[0_22px_60px_-28px_rgba(34,197,94,0.55),0_0_45px_rgba(251,146,60,0.22)] hover:-translate-y-1"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 via-yellow-500/10 to-green-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-5">
