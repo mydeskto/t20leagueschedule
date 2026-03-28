@@ -61,7 +61,7 @@ const FeaturedLeagues = () => {
   }, []);
 
   return (
-    <section id="leagues" ref={sectionRef} className="section-padding relative">
+    <section id="leagues" ref={sectionRef} className="section-padding relative scroll-mt-24">
       {/* Section background accent */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent pointer-events-none" />
 
@@ -117,12 +117,12 @@ const FeaturedLeagues = () => {
               </h3> */}
                 <p className="text-sm text-muted-foreground mb-5">{league.name}</p>
 
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <div className="flex items-center ju gap-2 text-xs text-muted-foreground">
                   <Calendar className="w-3.5 h-3.5" />
                   <span>{league.startDate}</span>
                 </div>
 
-                <div className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                <div className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-primary  transition-all duration-300 transform translate-y-2 ">
                   View  {league.shortName} 2026 Schedule <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
@@ -132,11 +132,12 @@ const FeaturedLeagues = () => {
 
         {/* Domestic T20 Leagues */}
         <motion.div
+          id="domestic-t20"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mt-20 mb-10"
+          className="text-center mt-20 mb-10 scroll-mt-24"
         >
           <div className="inline-flex items-center gap-2 bg-foreground/5 border border-glass-border px-4 py-1.5 rounded-full mb-5">
             <span className="text-xs font-semibold text-foreground uppercase tracking-wider">Domestic T20</span>
@@ -192,11 +193,12 @@ const FeaturedLeagues = () => {
 
         {/* Women's Premier Leagues */}
         <motion.div
+          id="womens-leagues"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mt-20 mb-10"
+          className="text-center mt-20 mb-10 scroll-mt-24"
         >
           <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 px-4 py-1.5 rounded-full mb-5">
             <span className="text-xs font-semibold text-accent uppercase tracking-wider">Women&apos;s Cricket</span>

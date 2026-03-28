@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search, ChevronDown } from "lucide-react";
-import { leagues } from "@/data/leagues";
+import { leagues, DomesticLeagues, womenLeagues } from "@/data/leagues";
 import Image from "next/image";
 import FaqDialogButton from "@/components/FaqDialogButton";
 
@@ -16,6 +16,10 @@ const Navbar = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [leaguesOpen, setLeaguesOpen] = useState(false);
+  const [mobileLeaguesOpen, setMobileLeaguesOpen] = useState(false);
+  const [mobileOtherOpen, setMobileOtherOpen] = useState(false);
+  const [mobileDomesticOpen, setMobileDomesticOpen] = useState(false);
+  const [mobileWomenOpen, setMobileWomenOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -27,6 +31,10 @@ const Navbar = () => {
   useEffect(() => {
     setMobileOpen(false);
     setSearchOpen(false);
+    setMobileLeaguesOpen(false);
+    setMobileOtherOpen(false);
+    setMobileDomesticOpen(false);
+    setMobileWomenOpen(false);
   }, [pathname]);
 
   const filteredLeagues = leagues.filter((l) =>
@@ -171,19 +179,190 @@ const Navbar = () => {
             className="md:hidden overflow-hidden bg-card/95 backdrop-blur-2xl border-t border-glass-border"
           >
             <div className="px-4 py-5 space-y-1">
-              <Link href="/" className="block px-4 py-3 rounded-xl text-foreground hover:bg-foreground/5 transition-all font-medium">Home</Link>
-              <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Leagues</div>
-              {leagues.map((l) => (
-                <Link key={l.id} href={`/${l.id}`} className="flex items-center gap-3 px-4 py-3 rounded-xl text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all">
-                  {l.logo ? (
-                    <div className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden bg-background/40">
-                      <Image src={l.logo} alt="" width={28} height={28} className="w-full h-full object-contain" />
+              <Link href="/" className="block px-4 py-3 rounded-xl text-foreground hover:bg-foreground/5 transition-all font-medium">
+                Home
+              </Link>
+
+              {/* Leagues (international / main) */}
+              <button
+                type="button"
+                onClick={() => setMobileLeaguesOpen((o) => !o)}
+                className="flex w-full items-center justify-between px-4 py-3 rounded-xl text-foreground/90 hover:bg-foreground/5 transition-all font-medium text-left"
+              >
+                Leagues
+                <ChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-200 ${mobileLeaguesOpen ? "rotate-180" : ""}`} />
+              </button>
+              <AnimatePresence initial={false}>
+                {mobileLeaguesOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pb-2 pl-2 space-y-0.5 border-l border-glass-border ml-4">
+                      {leagues.map((l) => (
+                        <Link
+                          key={l.id}
+                          href={`/${l.id}`}
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
+                        >
+                          {l.logo ? (
+                            <div className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden bg-background/40">
+                              <Image src={l.logo} alt="" width={28} height={28} className="w-full h-full object-contain" />
+                            </div>
+                          ) : (
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary/60 flex-shrink-0" />
+                          )}
+                          <span>
+                            <span className="font-medium text-foreground/90">{l.shortName}</span>
+                            <span className="text-muted-foreground"> — {l.name}</span>
+                          </span>
+                        </Link>
+                      ))}
                     </div>
-                  ) : null}
-                  {l.shortName}
-                </Link>
-              ))}
-              <Link href="/venues" className="block px-4 py-3 rounded-xl text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all">Venues</Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Other — quick links */}
+              <button
+                type="button"
+                onClick={() => setMobileOtherOpen((o) => !o)}
+                className="flex w-full items-center justify-between px-4 py-3 rounded-xl text-foreground/90 hover:bg-foreground/5 transition-all font-medium text-left"
+              >
+                Other
+                <ChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-200 ${mobileOtherOpen ? "rotate-180" : ""}`} />
+              </button>
+              <AnimatePresence initial={false}>
+                {mobileOtherOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pb-2 pl-2 space-y-0.5 border-l border-glass-border ml-4">
+                      <Link
+                        href="/#leagues"
+                        className="block px-3 py-2.5 rounded-lg text-sm text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
+                      >
+                        Featured leagues (home)
+                      </Link>
+                      <Link
+                        href="/faqs"
+                        className="block px-3 py-2.5 rounded-lg text-sm text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
+                      >
+                        FAQs
+                      </Link>
+                      <Link
+                        href="/about-us"
+                        className="block px-3 py-2.5 rounded-lg text-sm text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
+                      >
+                        About
+                      </Link>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Domestic T20 */}
+              <button
+                type="button"
+                onClick={() => setMobileDomesticOpen((o) => !o)}
+                className="flex w-full items-center justify-between px-4 py-3 rounded-xl text-foreground/90 hover:bg-foreground/5 transition-all font-medium text-left"
+              >
+                Domestic T20
+                <ChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-200 ${mobileDomesticOpen ? "rotate-180" : ""}`} />
+              </button>
+              <AnimatePresence initial={false}>
+                {mobileDomesticOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pb-2 pl-2 space-y-0.5 border-l border-glass-border ml-4">
+                      <Link
+                        href="/#domestic-t20"
+                        className="block px-3 py-2 rounded-lg text-xs font-medium text-primary hover:underline"
+                      >
+                        View all on homepage ↓
+                      </Link>
+                      {DomesticLeagues.map((l) => (
+                        <Link
+                          key={l.id}
+                          href="/#domestic-t20"
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
+                        >
+                          {l.logo ? (
+                            <div className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden bg-background/40">
+                              <Image src={l.logo} alt="" width={28} height={28} className="w-full h-full object-contain" />
+                            </div>
+                          ) : (
+                            <span className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center bg-foreground/5 text-xs">🏏</span>
+                          )}
+                          <span>
+                            <span className="font-medium text-foreground/90">{l.shortName}</span>
+                            <span className="text-muted-foreground"> — {l.name}</span>
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Women&apos;s leagues */}
+              <button
+                type="button"
+                onClick={() => setMobileWomenOpen((o) => !o)}
+                className="flex w-full items-center justify-between px-4 py-3 rounded-xl text-foreground/90 hover:bg-foreground/5 transition-all font-medium text-left"
+              >
+                Women&apos;s leagues
+                <ChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-200 ${mobileWomenOpen ? "rotate-180" : ""}`} />
+              </button>
+              <AnimatePresence initial={false}>
+                {mobileWomenOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pb-2 pl-2 space-y-0.5 border-l border-glass-border ml-4">
+                      <Link
+                        href="/#womens-leagues"
+                        className="block px-3 py-2 rounded-lg text-xs font-medium text-primary hover:underline"
+                      >
+                        View all on homepage ↓
+                      </Link>
+                      {womenLeagues.map((l) => (
+                        <Link
+                          key={l.id}
+                          href="/#womens-leagues"
+                          className="block px-3 py-2.5 rounded-lg text-sm text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
+                        >
+                          <span className="font-medium text-foreground/90">{l.shortName}</span>
+                          <span className="text-muted-foreground"> — {l.name}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <Link
+                href="/venues"
+                className="block px-4 py-3 rounded-xl text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all font-medium"
+              >
+                Venues
+              </Link>
             </div>
           </motion.div>
         )}

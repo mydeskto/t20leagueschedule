@@ -486,10 +486,10 @@ export default function HeroSection() {
                     {/* Action Buttons */}
                     <div className="flex gap-3">
                       <Button
-                        className={`flex-1 bg-gradient-to-r ${slide.gradient} hover:opacity-90 text-white text-sm sm:text-base`}
+                        className={`flex-1 items-center justify-center bg-gradient-to-r ${slide.gradient} hover:opacity-90 text-white text-sm sm:text-base`}
                       >
-                        <Calendar className="w-4 h-4 mr-2" />
-                        Schedule
+                      <Link href={slide.link} className='flex justify-center items-center'>  <Calendar className="w-4 h-4 mr-2" />
+                        Schedule</Link>
                       </Button>
                       <Button
                         variant="outline"
