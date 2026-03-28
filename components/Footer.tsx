@@ -18,7 +18,7 @@ const Footer = () => {
 
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Your ultimate destination for cricket league schedules, scores, and standings worldwide.
+              Your ultimate destination for all T20 cricket leagues — featuring complete match schedules, updated points tables, and detailed team information worldwide.
             </p>
           </div>
 
