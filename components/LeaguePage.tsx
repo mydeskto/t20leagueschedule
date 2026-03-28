@@ -1,10 +1,10 @@
 "use client";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Calendar, ChevronDown, Clock, MapPin, Trophy, Users } from "lucide-react";
-import { getLeagueById, getPointsTableYears, getPointsTableForYear } from "@/data/leagues";
+import { getLeagueById, getPointsTableYears, getPointsTableForYear, type League, type PointsEntry } from "@/data/leagues";
 import { venueImages } from "@/components/VenuesSection";
 import Navbar from "@/components/Navbar";
 import FAQSection from "@/components/FAQSection";
@@ -65,6 +65,100 @@ const leagueH1: Record<string, string> = {
   psl: "PSL 2026 Schedule – Full Fixtures, Teams, Points Table & Venues",
 };
 
+function slugifyId(s: string) {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "item";
+}
+
+function parseMatchStartIso(dateStr: string, timeStr: string): string | undefined {
+  const combined = `${dateStr.trim()} ${timeStr.trim()}`;
+  const d = new Date(combined);
+  if (Number.isNaN(d.getTime())) return undefined;
+  return d.toISOString();
+}
+
+function buildLeaguePageJsonLd(league: League, pointsTableData: PointsEntry[], pointsYear: string) {
+  const graph: Record<string, unknown>[] = [];
+
+  if (league.schedule.length > 0) {
+    graph.push({
+      "@type": "ItemList",
+      "@id": `#${league.id}-schedule`,
+      name: `${league.shortName} match schedule`,
+      description: `Full fixture list for ${league.name}.`,
+      numberOfItems: league.schedule.length,
+      itemListElement: league.schedule.map((m, index) => {
+        const startDate = parseMatchStartIso(m.date, m.time);
+        return {
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "SportsEvent",
+            "@id": `#${league.id}-match-${m.id}`,
+            name: `${m.team1} vs ${m.team2}`,
+            sport: "Cricket",
+            ...(startDate ? { startDate } : {}),
+            location: { "@type": "Place", name: m.venue },
+            organizer: { "@type": "SportsOrganization", name: league.shortName },
+          },
+        };
+      }),
+    });
+  }
+
+  if (pointsTableData.length > 0) {
+    graph.push({
+      "@type": "ItemList",
+      "@id": `#${league.id}-points-${pointsYear}`,
+      name: `${league.shortName} ${pointsYear} points table`,
+      description: `Standings for ${league.name} (${pointsYear}).`,
+      numberOfItems: pointsTableData.length,
+      itemListElement: pointsTableData.map((entry, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "SportsTeam",
+          "@id": `#${league.id}-standings-${slugifyId(entry.team)}`,
+          name: entry.team,
+          sport: "Cricket",
+          memberOf: { "@type": "SportsOrganization", name: league.shortName },
+          additionalProperty: [
+            { "@type": "PropertyValue", name: "Played", value: String(entry.played) },
+            { "@type": "PropertyValue", name: "Won", value: String(entry.won) },
+            { "@type": "PropertyValue", name: "Lost", value: String(entry.lost) },
+            { "@type": "PropertyValue", name: "NRR", value: entry.nrr },
+            { "@type": "PropertyValue", name: "Points", value: String(entry.points) },
+          ],
+        },
+      })),
+    });
+  }
+
+  if (league.teams.length > 0) {
+    graph.push({
+      "@type": "ItemList",
+      "@id": `#${league.id}-teams`,
+      name: `${league.shortName} teams`,
+      description: `Teams competing in ${league.name}.`,
+      numberOfItems: league.teams.length,
+      itemListElement: league.teams.map((team, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "SportsTeam",
+          "@id": `#${league.id}-team-${slugifyId(team.name)}`,
+          name: team.name,
+          alternateName: team.shortName,
+          sport: "Cricket",
+          memberOf: { "@type": "SportsOrganization", name: league.shortName },
+        },
+      })),
+    });
+  }
+
+  if (graph.length === 0) return null;
+  return { "@context": "https://schema.org", "@graph": graph };
+}
+
 const LeaguePage = () => {
   const params = useParams();
   const leagueId = typeof params?.leagueId === "string" ? params.leagueId : "";
@@ -94,6 +188,11 @@ const LeaguePage = () => {
   const pointsTableYears = getPointsTableYears(league);
   const displayYears = pointsTableYears.length > 0 ? pointsTableYears : ["2026"];
   const pointsTableData = getPointsTableForYear(league, selectedPointsYear);
+
+  const leagueJsonLd = useMemo(() => {
+    const rows = getPointsTableForYear(league, selectedPointsYear);
+    return buildLeaguePageJsonLd(league, rows, selectedPointsYear);
+  }, [league, selectedPointsYear]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -178,6 +277,12 @@ const LeaguePage = () => {
 
       {/* Tab Content */}
       <div className="container-narrow px-4 md:px-8 py-12">
+        {leagueJsonLd ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(leagueJsonLd) }}
+          />
+        ) : null}
         {activeTab === "Schedule" && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-3">
             {league.schedule.map((match, i) => (

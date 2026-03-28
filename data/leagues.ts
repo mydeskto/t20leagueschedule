@@ -178,8 +178,8 @@ export const leagues: League[] = [
       { question: "When does IPL 2026 start?", answer: "IPL 2026 begins on March 28, 2026 (RCB vs SRH at Bengaluru) and the final is on May 31, 2026. The first phase (20 matches) runs till April 12." },
       { question: "How many teams are in IPL?", answer: "There are 10 teams: RCB, SRH, MI, KKR, RR, CSK, Punjab Kings, Gujarat Titans, Lucknow Super Giants, and Delhi Capitals." },
     ],
-    seoTitle: "IPL 2026 Schedule: Match Dates, Points Table, Teams & Venues",
-    seoDescription: "Check IPL 2026 full schedule, match fixtures, points table, teams, venues, and latest news. Stay updated with every IPL match.",
+    seoTitle: "IPL 2026 Schedule | Fixtures, Points Table, Teams & Venues",
+    seoDescription: "Check the complete IPL 2026 schedule with match fixtures, teams, venues, and updated points table. Stay updated with every match.",
     logo: "/images/IPL-Logo.png",
   },
   {
@@ -295,8 +295,8 @@ export const leagues: League[] = [
       { question: "How many teams are in PSL 11?", answer: "There are 8 teams: Islamabad United, Karachi Kings, Lahore Qalandars, Multan Sultans, Peshawar Zalmi, Quetta Gladiators, Hyderabad Kingsmen, and Rawalpindi Pindiz." },
       { question: "Where can I watch PSL matches?", answer: "PSL matches are broadcast on various sports channels and streaming platforms worldwide." },
     ],
-    seoTitle: "PSL 2026 Schedule: Match Dates, Points Table, Teams & Venues",
-    seoDescription: "Explore PSL 2026 full schedule including match dates, points table, team squads, venues, and latest news.",
+    seoTitle: "PSL 2026 Schedule | Fixtures, Points Table, Teams & Venues",
+    seoDescription: "Check the complete PSL 2026 schedule with match fixtures, teams, venues, and updated points table. Stay updated with every match.",
     logo: "/images/PSL-Logo.png",
   },
   { 
@@ -308,8 +308,8 @@ export const leagues: League[] = [
     seasonsTill2026: 15,
     startDate: "Dec 2026 (expected)",
     endDate: "Jan 2027",
-    seoTitle: "BBL 2026 Schedule – Big Bash League Fixtures & Teams",
-    seoDescription: "Check BBL 2026 full schedule with match dates, team squads, points table, and venues. Stay updated with every Big Bash League match in December 2026.",
+    seoTitle: "BBL 2026 Schedule | Fixtures, Points Table, Teams & Venues",
+    seoDescription: "Check the complete BBL 2026 schedule with match fixtures, teams, venues, and updated points table. Stay updated with every match.",
     status: "Window based",
     gradient: 'from-orange-500 via-red-600 to-pink-600',
     color: "#f59e0b",
@@ -338,8 +338,8 @@ export const leagues: League[] = [
     shortName: "CPL",
     country: "West Indies",
     season: "Season 14",
-    seoTitle: "CPL 2026 Schedule – Caribbean Premier League Fixtures & Teams",
-    seoDescription: "Explore CPL 2026 complete schedule including match dates, teams, points table, and venues. Get updates on every Caribbean Premier League match expected in August 2026.",
+    seoTitle: "CPL 2026 Schedule | Fixtures, Points Table, Teams & Venues",
+    seoDescription: "Check the complete CPL 2026 schedule with match fixtures, teams, venues, and updated points table. Stay updated with every match.",
     seasonsTill2026: 14,
     startDate: "Aug 2026 (expected)",
     endDate: "Sep 2026",
@@ -369,8 +369,8 @@ export const leagues: League[] = [
     shortName: "SA20",
     country: "South Africa",
     season: "Season 4",
-    seoTitle: "SA20 2026 Schedule – South Africa T20 League Fixtures & Teams",
-    seoDescription: "Check SA20 2026 full schedule with match fixtures, teams, points table, and venues. Stay updated with every South African T20 league match expected in January 2026.",
+    seoTitle: "SA20 2026 Schedule | Fixtures, Points Table, Teams & Venues",
+    seoDescription: "Check the complete SA20 2026 schedule with match fixtures, teams, venues, and updated points table. Stay updated with every match.",
     seasonsTill2026: 4,
     startDate: "Jan 2026 (expected)",
     endDate: "Feb 2026",
@@ -399,8 +399,8 @@ export const leagues: League[] = [
     name: "International League T20",
     shortName: "ILT20",
     country: "UAE",
-    seoTitle: "ILT20 2026 Schedule – International League T20 Fixtures & Teams",
-    seoDescription: "Explore ILT20 2026 complete schedule including match dates, teams, points table, and venues. Stay updated with every International League T20 match expected in January 2026.",
+    seoTitle: "ILT20 2026 Schedule | Fixtures, Points Table, Teams & Venues",
+    seoDescription: "Check the complete ILT20 2026 schedule with match fixtures, teams, venues, and updated points table. Stay updated with every match.",
     season: "Season 4",
     seasonsTill2026: 4,
     startDate: "Jan 2026 (expected)",
@@ -430,8 +430,8 @@ export const leagues: League[] = [
     shortName: "BPL",
     country: "Bangladesh",
     season: "Season 12",
-    seoTitle: "BPL 2026 Schedule – Bangladesh Premier League Fixtures & Teams",
-    seoDescription: "Check BPL 2026 full schedule with match fixtures, team squads, points table, and venues. Stay updated with every Bangladesh Premier League match expected in January 2026.",
+    seoTitle: "BPL 2026 Schedule | Fixtures, Points Table, Teams & Venues",
+    seoDescription: "Check the complete BPL 2026 schedule with match fixtures, teams, venues, and updated points table. Stay updated with every match.",
     seasonsTill2026: 12,
     startDate: "Jan 2026 (expected)",
     endDate: "Feb 2026",
@@ -460,8 +460,8 @@ export const leagues: League[] = [
     shortName: "LPL",
     country: "Sri Lanka",
     season: "Season 6",
-    seoTitle: "LPL 2026 Schedule – Lanka Premier League Fixtures & Teams",
-    seoDescription: "Explore LPL 2026 complete schedule including match dates, teams, points table, and venues. Stay updated with every Lanka Premier League match on 8 July 2026.",
+    seoTitle: "LPL 2026 Schedule | Fixtures, Points Table, Teams & Venues",
+    seoDescription: "Check the complete LPL 2026 schedule with match fixtures, teams, venues, and updated points table. Stay updated with every match.",
     seasonsTill2026: 6,
     startDate: "8 July 2026",
     endDate: "8 Aug 2026",
@@ -490,8 +490,8 @@ export const leagues: League[] = [
     shortName: "MLC",
     country: "USA",
     season: "Season 4",
-    seoTitle: "MLC 2026 Schedule – Major League Cricket Fixtures & Teams",
-    seoDescription: "Check MLC 2026 full schedule with match dates, teams, points table, and venues. Stay updated with every Major League Cricket match expected in June 2026.",
+    seoTitle: "MLC 2026 Schedule | Fixtures, Points Table, Teams & Venues",
+    seoDescription: "Check the complete MLC 2026 schedule with match fixtures, teams, venues, and updated points table. Stay updated with every match.",
     seasonsTill2026: 4,
     startDate: "Jun 2026 (expected)",
     endDate: "Jul 2026",
@@ -520,8 +520,8 @@ export const leagues: League[] = [
     shortName: "NPL",
     country: "Nepal",
     season: "Season 3",
-    seoTitle: "NPL 2026 Schedule – Nepal Premier League Fixtures & Teams",
-    seoDescription: "Explore NPL 2026 complete schedule including match dates, teams, points table, and venues. Stay updated with every Nepal Premier League match expected in October 2026.",
+    seoTitle: "NPL 2026 Schedule | Fixtures, Points Table, Teams & Venues",
+    seoDescription: "Check the complete NPL 2026 schedule with match fixtures, teams, venues, and updated points table. Stay updated with every match.",
     seasonsTill2026: 3,
     startDate: "Oct 2026 (expected)",
     endDate: "Nov 2026",
@@ -550,8 +550,8 @@ export const leagues: League[] = [
     shortName: "100",
     country: "England",
     season: "Season 5",
-    seoTitle: "The Hundred 2026 Schedule – Full Fixtures & Teams",
-    seoDescription: "Check The Hundred 2026 full schedule with match dates, teams, points table, and venues. Stay updated with every match of The Hundred starting 22 July 2026.",
+    seoTitle: "The Hundred 2026 Schedule | Fixtures, Teams & Points Table",
+    seoDescription: "Check The Hundred 2026 schedule with match fixtures, teams, venues, and updated points table. Stay updated with every match.",
     seasonsTill2026: 5,
     startDate: "Jul 22, 2026",
     endDate: "Aug 2026",
@@ -584,7 +584,7 @@ export const womenLeagues: WomenLeague[] = [
     country: "India",
     seasonsTill2026: 4,
     window2026: "Feb–Mar 2026 (expected)",
-    seoTitle:"WPL 2026 Schedule – Women's Premier League Fixtures & Teams",
+    seoTitle:"WPL 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:"Check WPL 2026 full schedule including match fixtures, team squads, points table, and venues. Stay updated with every Women's Premier League match in India."
   },
   {
@@ -594,7 +594,7 @@ export const womenLeagues: WomenLeague[] = [
     country: "Australia",
     seasonsTill2026: 12,
     window2026: "Oct–Nov 2026",
-    seoTitle:"WBBL 2026 Schedule – Women's Big Bash League Fixtures & Teams",
+    seoTitle:"WBBL 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:"Explore WBBL 2026 complete schedule with match dates, team squads, points table, and venues. Get all updates for every Women's Big Bash League match in Australia."
   },
   { id: "wcpl", 
@@ -603,7 +603,7 @@ export const womenLeagues: WomenLeague[] = [
     country: "West Indies", 
     seasonsTill2026: 5, 
     window2026: "Aug 2026",
-    seoTitle:"WCPL 2026 Schedule – Women's Caribbean Premier League Fixtures & Teams",
+    seoTitle:"WCPL 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:"Check WCPL 2026 full schedule including match fixtures, team squads, points table, and venues. Stay updated with every Women's Caribbean Premier League match."
   },
   { id: "the-hundred-women", 
@@ -612,7 +612,7 @@ export const womenLeagues: WomenLeague[] = [
     country: "England", 
     seasonsTill2026: 6, 
     window2026: "Jul–Aug 2026",
-    seoTitle:"The Hundred Women 2026 Schedule – Full Fixtures & Teams",
+    seoTitle:"The Hundred Women 2026 Schedule | Fixtures & Teams",
     seoDescription:"Explore The Hundred Women 2026 complete schedule including match dates, team squads, points table, and venues. Get updates for every match of The Hundred Women's tournament in England."
   },
 ];
@@ -636,9 +636,9 @@ export const DomesticLeagues: League[] = [
     pointsTableByYear: { "2026": [] },
     venues: [],
     faqs: [{ question: "When is T20 Blast 2026 expected?", answer: "The expected window is May to September 2026." }],
-    seoTitle: "T20 Blast 2026 Schedule: Fixtures, Points Table & Teams",
+    seoTitle: "T20 Blast 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
-      "Check T20 Blast 2026 expected window, fixtures, points table, teams, and venues for England & Wales domestic T20 cricket.",
+      "Check the complete T20 Blast 2026 schedule with match fixtures, teams, and updated points table. Stay updated with every match.",
     logo: "/images/domestic/T20 Blast.jpg.jpeg"
   },
   {
@@ -658,7 +658,7 @@ export const DomesticLeagues: League[] = [
     pointsTableByYear: { "2026": [] },
     venues: [],
     faqs: [{ question: "When is SMAT 2026 expected?", answer: "The expected window is October to November 2026." }],
-    seoTitle: "SMAT 2026 Schedule: Fixtures, Points Table & Teams",
+    seoTitle: "SMAT 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Explore Syed Mushtaq Ali Trophy (SMAT) 2026 expected window, fixtures, points table, teams, and venues for India's domestic T20 season.",
     logo: "/images/domestic/Syed_Mushtaq_Ali_Trophy logo.png"
@@ -680,7 +680,7 @@ export const DomesticLeagues: League[] = [
     pointsTableByYear: { "2026": [] },
     venues: [],
     faqs: [{ question: "When is National T20 Cup 2026 expected?", answer: "The expected window is August to September 2026." }],
-    seoTitle: "National T20 Cup 2026 Schedule: Fixtures, Points Table & Teams",
+    seoTitle: "National T20 Cup 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Check Pakistan National T20 Cup 2026 expected window, fixtures, points table, teams, and venues for Pakistan domestic T20 cricket.",
     logo: "/images/domestic/National_T20_Cup__Logo.png"
@@ -702,7 +702,7 @@ export const DomesticLeagues: League[] = [
     pointsTableByYear: { "2026": [] },
     venues: [],
     faqs: [{ question: "When is Super Smash 2026 expected?", answer: "The expected window is December 2026 to January 2027." }],
-    seoTitle: "Super Smash 2026 Schedule: Fixtures, Points Table & Teams",
+    seoTitle: "Super Smash 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Explore Super Smash 2026 expected window, fixtures, points table, teams, and venues for New Zealand domestic T20 cricket.",
     logo: "/images/domestic/Super Smash logo.jpg.jpeg"
@@ -724,7 +724,7 @@ export const DomesticLeagues: League[] = [
     pointsTableByYear: { "2026": [] },
     venues: [],
     faqs: [{ question: "When is CSA T20 Challenge 2026 expected?", answer: "The expected window is October to November 2026." }],
-    seoTitle: "CSA T20 Challenge 2026 Schedule: Fixtures, Points Table & Teams",
+    seoTitle: "CSA T20 Challenge 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Check CSA T20 Challenge 2026 expected window, fixtures, points table, teams, and venues for South Africa domestic T20 cricket.",
     logo: "/images/domestic/CSA_T20_Challenge_Logo.png"
@@ -746,7 +746,7 @@ export const DomesticLeagues: League[] = [
     pointsTableByYear: { "2026": [] },
     venues: [],
     faqs: [{ question: "When is SCL 2026 expected?", answer: "The expected window is July to August 2026." }],
-    seoTitle: "Shpageeza Cricket League 2026 Schedule: Fixtures & Teams",
+    seoTitle: "Shpageeza League 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Explore Shpageeza Cricket League (SCL) 2026 expected window, fixtures, points table, teams, and venues for Afghanistan domestic T20 cricket.",
     logo: "/images/domestic/Shpagiza_league_logo.png"
@@ -768,7 +768,7 @@ export const DomesticLeagues: League[] = [
     pointsTableByYear: { "2026": [] },
     venues: [],
     faqs: [{ question: "When is Global T20 Canada 2026 expected?", answer: "The expected window is July to August 2026." }],
-    seoTitle: "Global T20 Canada 2026 Schedule: Fixtures, Points Table & Teams",
+    seoTitle: "GT20 Canada 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Check Global T20 Canada (GT20) 2026 expected window, fixtures, points table, teams, and venues for Canada's domestic T20 season.",
     
@@ -790,7 +790,7 @@ export const DomesticLeagues: League[] = [
     pointsTableByYear: { "2026": [] },
     venues: [],
     faqs: [{ question: "When is MiLC 2026 expected?", answer: "The expected window is June to September 2026." }],
-    seoTitle: "Minor League Cricket 2026 Schedule: Fixtures, Points Table & Teams",
+    seoTitle: "MiLC 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Explore Minor League Cricket (MiLC) 2026 expected window, fixtures, points table, teams, and venues for USA domestic T20 cricket.",
     logo: "/images/domestic/Minor League Cricket_ logo.jpg.jpeg"
@@ -812,7 +812,7 @@ export const DomesticLeagues: League[] = [
     pointsTableByYear: { "2026": [] },
     venues: [],
     faqs: [{ question: "When is TNPL 2026 expected?", answer: "The expected window is June to July 2026." }],
-    seoTitle: "TNPL 2026 Schedule: Fixtures, Points Table & Teams",
+    seoTitle: "TNPL 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Check Tamil Nadu Premier League (TNPL) 2026 expected window, fixtures, points table, teams, and venues for India's domestic T20 season.",
     logo: "/images/domestic/Tamil Nadu Premier League logo.jpg.jpeg"
@@ -836,9 +836,59 @@ export const getPointsTableForYear = (league: League, year: string): PointsEntry
 };
 
 export const globalFaqs: FAQ[] = [
-  { question: "What leagues are included?", answer: "We cover IPL, PSL, BBL, CPL, BPL, SA20, ILT20, LPL, MLC, NPL, The Hundred, and women's leagues (WPL, WBBL, WCPL, The Hundred Women)." },
-  { question: "How often are schedules updated?", answer: "Schedules are updated in real-time as official fixtures are announced or modified by the respective cricket boards." },
-  { question: "Where can I see points tables?", answer: "Each league page has a dedicated points table section that is updated after every match." },
-  { question: "How to check team details?", answer: "Navigate to any league page and explore the Teams tab to see all team rosters and information." },
-  { question: "Is this platform free to use?", answer: "Yes, all cricket league information is freely accessible on our platform." },
+  {
+    question: "What is t20leagueschedule.com?",
+    answer:
+      "t20leagueschedule.com is a comprehensive platform dedicated to providing schedules, fixtures, results, team information, points tables, and news for T20 cricket leagues worldwide. Our mission is to make following every T20 league easy and enjoyable for fans of all levels.",
+  },
+  {
+    question: "How do I find match schedules?",
+    answer:
+      "Navigate to the Leagues section on the homepage. Select the league you are interested in. Each league page contains a full schedule, including match dates, times, and venues. Fixtures are updated regularly to ensure accuracy.",
+  },
+  {
+    question: "How can I check team and player information?",
+    answer:
+      "On each league page, you will find a Teams & Players section. Here you can view team rosters, captain details, player stats, and more. This information is sourced from official announcements and updated throughout the season.",
+  },
+  {
+    question: "How do I track points tables and standings?",
+    answer:
+      "Each league page includes a Points Table section. Tables are updated as matches are played, showing wins, losses, points, and rankings. Historical standings may also be available for reference.",
+  },
+  {
+    question: "Can I rely on your information for official purposes?",
+    answer:
+      "Our content is for informational purposes only. We strive for accuracy but cannot guarantee completeness or real-time results. Users should verify details with official league sources before making any decisions based on the data.",
+  },
+  {
+    question: "How can I contact t20leagueschedule.com?",
+    answer:
+      "For questions, feedback, or suggestions, email us at info@t20leagueschedule.com. Our team responds promptly and ensures your inquiries are addressed professionally.",
+  },
+  {
+    question: "How often is the site updated?",
+    answer:
+      "We update schedules, fixtures, standings, and news as soon as official updates are released. Our goal is to keep information current and reliable for all users.",
+  },
+  {
+    question: "Do you cover all T20 leagues?",
+    answer:
+      "Yes, we aim to cover all T20 cricket leagues, from widely followed competitions to smaller regional and domestic tournaments. This ensures fans can access complete information in one place.",
+  },
+  {
+    question: "Is my personal information safe?",
+    answer:
+      "Yes, your privacy is important to us. We do not sell or share personal information and follow strict privacy practices, as explained in our Privacy Policy.",
+  },
+  {
+    question: "Can I suggest improvements or new leagues?",
+    answer:
+      "Absolutely! We welcome feedback and suggestions. Email your ideas to info@t20leagueschedule.com, and we will consider adding new content or features based on user requests.",
+  },
+  {
+    question: "Do you provide news and updates?",
+    answer:
+      "Yes, our site features news, announcements, and updates related to T20 leagues. This includes changes in fixtures, team announcements, and general cricket-related news.",
+  },
 ];

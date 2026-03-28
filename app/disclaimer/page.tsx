@@ -1,80 +1,104 @@
-import Link from 'next/link'
-
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function Disclaimer() {
-
   return (
-    <>
-    <div className="min-h-screen bg-[#122754] font-inter ">
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <main className="container-narrow px-4 md:px-8 pt-24 pb-16">
+        <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-8">Disclaimer</h1>
 
-      <div className="max-w-full mx-auto pt-20">
-        <div className=" rounded-lg  p-8 md:p-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-3 text-left">
-            Disclaimer
-          </h1>
+        <div className="space-y-8 text-muted-foreground leading-relaxed max-w-3xl">
+          <p className="text-foreground/90">
+            The information provided on t20leagueschedule.com is for general informational purposes only. While we strive
+            to keep all content accurate and up-to-date, we make no guarantees regarding the completeness, reliability,
+            or timeliness of any information presented on this website.
+          </p>
 
-          <div className="prose prose-lg max-w-none">
-
-            <p className="text-md text-white mb-6 leading-relaxed">
-              The information on NPL Schedule is provided for general informational purposes only. While we strive to maintain accuracy and timeliness, we make no guarantees regarding the completeness, reliability, or suitability of any content on this website.
+          <section>
+            <h2 className="text-2xl font-display font-bold text-foreground mb-4">Accuracy of Information</h2>
+            <p className="mb-4">
+              <span className="text-foreground font-medium">Fixtures, Schedules, and Results:</span> All match dates,
+              times, venues, and scores are sourced from official announcements. However, schedules may change due to
+              unforeseen circumstances. Users are advised to verify information through official league sources before
+              making any plans.
             </p>
+            <p>
+              <span className="text-foreground font-medium">Team and Player Information:</span> Rosters, player stats,
+              and related information are collected from publicly available sources. We do our best to ensure accuracy,
+              but errors or omissions may occur.
+            </p>
+          </section>
 
-            <ol className="text-white mt-8 space-y-6 list-decimal pl-6">
-              <li>
-                <span className="text-2xl font-bold block mb-2"> No Professional Advice</span>
-                <p className="pl-0 my-3 text-md font-normal">
-                  Content here is for informational purposes only. It is not legal, financial, or professional advice. Any actions you take based on information from this website are entirely at your own risk.
-                </p>
-              </li>
+          <section>
+            <h2 className="text-2xl font-display font-bold text-foreground mb-4">No Professional Advice</h2>
+            <p className="mb-4">
+              The content on t20leagueschedule.com is not intended as professional, financial, or legal advice.
+            </p>
+            <p>
+              Users should not rely solely on the website&apos;s information for decision-making, betting, or any official
+              use.
+            </p>
+          </section>
 
-              <li>
-                <span className="text-2xl font-bold block mb-2"> Third-Party Links and Content</span>
-                <p className="pl-0 my-3 text-md font-normal">
-                  This website may link to external sites. We do not control, endorse, or guarantee the content, products, or services of these sites. Please review their policies before interacting or sharing personal information.
-                </p>
-              </li>
+          <section>
+            <h2 className="text-2xl font-display font-bold text-foreground mb-4">External Links</h2>
+            <p className="mb-4">
+              Our website may include links to third-party websites. We are not responsible for the content, policies, or
+              practices of these external sites.
+            </p>
+            <p>
+              Linking to external content does not imply endorsement by t20leagueschedule.com.
+            </p>
+          </section>
 
-              <li>
-                <span className="text-2xl font-bold block mb-2"> Match Schedules and Updates</span>
-                <p className="pl-0 my-3 text-md font-normal">
-                  Match dates, times, and venues may change without notice. NPL Schedule is not responsible for changes made by tournament organizers. Users should confirm official match information independently.
-                </p>
-              </li>
+          <section>
+            <h2 className="text-2xl font-display font-bold text-foreground mb-4">Limitation of Liability</h2>
+            <p className="mb-4">
+              t20leagueschedule.com and its team will not be held liable for any direct, indirect, incidental, or
+              consequential damages arising from the use of the website.
+            </p>
+            <p>
+              Users agree to use the site at their own risk and acknowledge that schedules, results, and other
+              information may change without notice.
+            </p>
+          </section>
 
-              <li>
-                <span className="text-2xl font-bold block mb-2"> Copyright & Trademarks</span>
-                <p className="pl-0 my-3 text-md font-normal">
-                  All logos, images, and team names are the property of their respective owners. NPL Schedule does not claim ownership unless explicitly stated. Any use is for editorial, educational, or informational purposes only.
-                </p>
-              </li>
+          <section>
+            <h2 className="text-2xl font-display font-bold text-foreground mb-4">Intellectual Property</h2>
+            <p className="mb-4">
+              All content, design elements, and materials on this site are the property of t20leagueschedule.com, unless
+              otherwise stated.
+            </p>
+            <p>
+              Reproduction, distribution, or use of content without written permission is prohibited.
+            </p>
+          </section>
 
-              <li>
-                <span className="text-2xl font-bold block mb-2"> Limitation of Liability</span>
-                <p className="pl-0 my-3 text-md font-normal">
-                  NPL Schedule and its team are not liable for any direct, indirect, incidental, or consequential damages resulting from your use of this website.
-                </p>
-              </li>
+          <section>
+            <h2 className="text-2xl font-display font-bold text-foreground mb-4">Updates to Disclaimer</h2>
+            <p className="mb-4">
+              We may update this disclaimer at any time without prior notice.
+            </p>
+            <p>
+              Changes will be posted on this page, and continued use of the website constitutes acceptance of the updated
+              disclaimer.
+            </p>
+          </section>
 
-              <li>
-                <span className="text-2xl font-bold block mb-2"> User Consent</span>
-                <p className="pl-0 my-3 text-md font-normal">
-                  By using this website, you accept this Disclaimer and agree to its terms.
-                </p>
-              </li>
-
-              <li>
-                <span className="text-2xl font-bold block mb-2"> Contact</span>
-                <p className="pl-0 my-3 text-md font-normal">
-                  📧 contactnplschedule@gmail.com
-                </p>
-              </li>
-            </ol>
-
-          </div>
+          <section>
+            <h2 className="text-2xl font-display font-bold text-foreground mb-4">Contact Us</h2>
+            <p className="mb-2">If you have questions regarding this disclaimer, please contact us:</p>
+            <p>
+              Email:{" "}
+              <a href="mailto:info@t20leagueschedule.com" className="text-primary hover:underline">
+                info@t20leagueschedule.com
+              </a>
+            </p>
+          </section>
         </div>
-      </div>
-
+      </main>
+      <Footer />
     </div>
-    </>
-  )
+  );
 }

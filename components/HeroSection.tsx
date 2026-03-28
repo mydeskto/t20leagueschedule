@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import trophy from "@/public/images/trop.png"
 
 const slides = [
   {
@@ -250,9 +251,10 @@ export default function HeroSection() {
             className="w-2 h-2 rounded-full animate-pulse"
             style={{ backgroundColor: slide.accentColor }}
           /> */}
+          <Image src={trophy.src} alt='trophy' width={20} height={20} />
 
-          <h1 className="text-sm md:text-lg font-medium text-center text-slate-300 italic">Schedules & Fixtures for  <span className={`text-lg bg-gradient-to-r ${slide.gradient} bg-clip-text text-transparent mb-4 inline`}>
-            All T20 Cricket Leagues
+          <h1 className="text-xs md:text-lg font-medium text-center text-slate-300 italic">Schedules & Fixtures for  <span className={`text-xs md:text-lg bg-gradient-to-r ${slide.gradient} bg-clip-text text-transparent mb-4 inline`}>
+            All T20 Cricket Leagues 2026
           </span>
           </h1>
         </motion.div>

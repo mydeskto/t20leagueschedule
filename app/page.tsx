@@ -9,6 +9,11 @@ import UpcomingMatches from "@/components/UpcomingMatches";
 import VenuesSection from "@/components/VenuesSection";
 import { globalFaqs } from "@/data/leagues";
 
+const faqIntro =
+  "Welcome to the t20leagueschedule.com FAQ page. Here, we answer common questions and provide guidance to help you navigate our site and stay updated with T20 cricket leagues.";
+
+const faqClosing =
+  "Thank you for visiting t20leagueschedule.com. We hope this FAQ page helps you navigate the site and stay fully informed about every T20 league around the world.";
 
 
 export default function HomePage() {
@@ -20,7 +25,7 @@ export default function HomePage() {
       <SchedulePreview />
       <PointsTableHighlights />
       <VenuesSection />
-      <FAQSection faqs={globalFaqs} />
+      <FAQSection faqs={globalFaqs} intro={faqIntro} closing={faqClosing} />
     </div>
   );
 }

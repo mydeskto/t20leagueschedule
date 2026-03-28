@@ -32,8 +32,8 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'T20 League Schedule – All T20 Cricket Match Fixtures, Teams & Points Table',
-  description: 'Find the complete T20 league schedule with match fixtures, teams, venues, and points tables for all T20 cricket leagues around the world.',
+  title: ' T20 League 2026 Schedule – Full Fixtures, Teams & Points Table',
+  description: 'T20 League 2026 Full Schedule: Fixtures, Teams & Points Table. Check match dates, squads, venues, and latest standings for all T20 leagues.',
   metadataBase: new URL('https://t20leagueschedule.com'),
   alternates: {
     canonical: 'https://t20leagueschedule.com',
