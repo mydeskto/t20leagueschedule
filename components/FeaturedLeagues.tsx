@@ -81,7 +81,7 @@ const FeaturedLeagues = () => {
             World's Top Cricket Leagues
           </h2>
           <p className="text-muted-foreground max-w-full mx-auto text-base">
-          Check out the <Link  href={'/'} className="text-amber-600">latest schedules</Link>, match dates, and team details for the biggest T20 cricket leagues worldwide. Stay updated with all fixtures, points tables, and venues for IPL,PSL ,BBL, CPL, & other top leagues.
+            Check out the <Link href={'/'} className="text-amber-600">latest schedules</Link>, match dates, and team details for the biggest <Link href={'https://en.wikipedia.org/wiki/List_of_Twenty20_cricket_competitions'} target="_blank" className="text-primary"></Link>worldwide. Stay updated with all fixtures, points tables, and venues for IPL,PSL ,BBL, CPL, & other top leagues.
           </p>
         </motion.div>
 
@@ -96,35 +96,35 @@ const FeaturedLeagues = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 via-yellow-500/10 to-green-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative z-10">
-              <div className="flex items-start justify-between mb-5">
-                {league.logo ? (
-                <div className="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden border border-glass-border">
-                  <Image src={league.logo} alt="" width={48} height={48} className="w-full h-full object-contain" />
+                <div className="flex items-start justify-between mb-5">
+                  {league.logo ? (
+                    <div className="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden border border-glass-border">
+                      <Image src={league.logo} alt="" width={48} height={48} className="w-full h-full object-contain" />
+                    </div>
+                  ) : (
+                    <span className="text-3xl">{leagueEmojis[league.id] || "🏏"}</span>
+                  )}
+                  <span className="text-[10px] font-semibold text-muted-foreground bg-foreground/5 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    {league.season}
+                  </span>
                 </div>
-                ) : (
-                <span className="text-3xl">{leagueEmojis[league.id] || "🏏"}</span>
-                )}
-                <span className="text-[10px] font-semibold text-muted-foreground bg-foreground/5 px-2.5 py-1 rounded-full uppercase tracking-wider">
-                {league.season}
-                </span>
-              </div>
-              
-              <h3 className={`text-lg bg-gradient-to-r ${league.gradient} bg-clip-text text-transparent mb-4 inline`}>
-          {league.shortName}
-          </h3>
-              {/* <h3 className="font-display font-bold text-xl text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
+
+                <h3 className={`text-lg bg-gradient-to-r ${league.gradient} bg-clip-text text-transparent mb-4 inline`}>
+                  {league.shortName}
+                </h3>
+                {/* <h3 className="font-display font-bold text-xl text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
                 
               </h3> */}
-              <p className="text-sm text-muted-foreground mb-5">{league.name}</p>
+                <p className="text-sm text-muted-foreground mb-5">{league.name}</p>
 
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <Calendar className="w-3.5 h-3.5" />
-                <span>{league.startDate}</span>
-              </div>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <Calendar className="w-3.5 h-3.5" />
+                  <span>{league.startDate}</span>
+                </div>
 
-              <div className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                View  {league.shortName} Schedule <ArrowRight className="w-4 h-4" />
-              </div>
+                <div className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                  View  {league.shortName} 2026 Schedule <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
             </Link>
           ))}
@@ -145,7 +145,7 @@ const FeaturedLeagues = () => {
             Domestic T20 Leagues
           </h3>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm">
-          Check out the key domestic T20 tournaments taking place in 2026. See the complete match Schedule & fixtures, including dates, team squads, venues, and points tables for all major domestic leagues worldwide.
+            Check out the key domestic T20 tournaments taking place in 2026. See the complete match Schedule & fixtures, including dates, team squads, venues, and points tables for all major domestic leagues worldwide.
           </p>
         </motion.div>
 
@@ -159,18 +159,18 @@ const FeaturedLeagues = () => {
 
               <div className="relative z-10">
                 <div className="relative z-10">
-                <div className="flex items-start justify-between mb-5">
-                  {league.logo ? (
-                    <div className="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden border border-glass-border">
-                      <Image src={league.logo} alt="" width={48} height={48} className="w-full h-full object-contain" />
-                    </div>
-                  ) : (
-                    <span className="text-3xl">{leagueEmojis[league.id] || "🏏"}</span>
-                  )}
-                  <span className="text-[10px] font-semibold text-muted-foreground bg-foreground/5 px-2.5 py-1 rounded-full uppercase tracking-wider">
-                    {league.season}
-                  </span>
-                </div>
+                  <div className="flex items-start justify-between mb-5">
+                    {league.logo ? (
+                      <div className="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden border border-glass-border">
+                        <Image src={league.logo} alt="" width={48} height={48} className="w-full h-full object-contain" />
+                      </div>
+                    ) : (
+                      <span className="text-3xl">{leagueEmojis[league.id] || "🏏"}</span>
+                    )}
+                    <span className="text-[10px] font-semibold text-muted-foreground bg-foreground/5 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                      {league.season}
+                    </span>
+                  </div>
                 </div>
 
                 <h3 className="font-display font-bold text-xl text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
@@ -205,7 +205,7 @@ const FeaturedLeagues = () => {
             Women&apos;s Cricket Leagues
           </h3>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm">
-          Intro- Check out the key women’s T20 tournaments taking place in 2026. See the complete match schedule & fixtures, including dates, team squads, venues, and points tables for all major women’s cricket leagues worldwide.
+            Intro- Check out the key women’s T20 tournaments taking place in 2026. See the complete match schedule & fixtures, including dates, team squads, venues, and points tables for all major women’s cricket leagues worldwide.
           </p>
         </motion.div>
 
