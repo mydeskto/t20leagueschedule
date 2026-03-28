@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { Clock, MapPin, Flame } from "lucide-react";
 import { leagues } from "@/data/leagues";
+import Link from "next/link";
 
 const UpcomingMatches = () => {
   const allMatches = leagues
@@ -26,7 +27,7 @@ const UpcomingMatches = () => {
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
             Next Matches
           </h2>
-          <p className="text-muted-foreground">Don’t miss the action! See the upcoming matches for all ongoing T20 leagues in 2026. Get match dates, team details, venues, and live points tables for IPL, PSL, BBL, CPL, and other major domestic and women’s leagues.</p>
+          <p className="text-muted-foreground">Don’t miss the action! See the upcoming matches for all ongoing T20 leagues in 2026. Get match dates, team details, venues, and live points tables for <Link href={'https://www.iplt20.com/'} className="text-amber-600"> IPL</Link> ,PSL ,BBL, <Link href={'https://www.cplt20.com/'} className="text-amber-600">CPL</Link> and other major domestic and women’s leagues.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">

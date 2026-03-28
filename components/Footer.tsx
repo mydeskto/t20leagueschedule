@@ -78,12 +78,22 @@ const Footer = () => {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} t20leagueschedule. All rights reserved.
           </p>
-          <div className="flex gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors duration-300">Privacy</a>
-            <a href="#" className="hover:text-foreground transition-colors duration-300">Terms</a>
-            <a href="#" className="hover:text-foreground transition-colors duration-300">About</a>
-            <a href="#" className="hover:text-foreground transition-colors duration-300">Contact Us</a>
-            <a href="#" className="hover:text-foreground transition-colors duration-300">Disclaimer</a>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+            <Link href="/privacy-policy" className="hover:text-foreground transition-colors duration-300">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-foreground transition-colors duration-300">
+              Terms
+            </Link>
+            <Link href="/about-us" className="hover:text-foreground transition-colors duration-300">
+              About
+            </Link>
+            <Link href="/contact-us" className="hover:text-foreground transition-colors duration-300">
+              Contact
+            </Link>
+            <Link href="/disclaimer" className="hover:text-foreground transition-colors duration-300">
+              Disclaimer
+            </Link>
           </div>
         </div>
       </div>

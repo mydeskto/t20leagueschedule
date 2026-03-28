@@ -81,7 +81,7 @@ const FeaturedLeagues = () => {
             World's Top Cricket Leagues
           </h2>
           <p className="text-muted-foreground max-w-full mx-auto text-base">
-            Check out the <Link href={'/'} className="text-amber-600">latest schedules</Link>, match dates, and team details for the biggest <Link href={'https://en.wikipedia.org/wiki/List_of_Twenty20_cricket_competitions'} target="_blank" className="text-primary"></Link>worldwide. Stay updated with all fixtures, points tables, and venues for IPL,PSL ,BBL, CPL, & other top leagues.
+            Check out the <Link href={'/'} className="text-amber-600">latest schedules</Link>, match dates, and team details for the biggest <Link href={'https://en.wikipedia.org/wiki/List_of_Twenty20_cricket_competitions'} target="_blank" className="text-amber-600"></Link>worldwide. Stay updated with all fixtures, points tables, and venues for IPL ,PSL ,BBL, CPL, & other top leagues.
           </p>
         </motion.div>
 
@@ -144,8 +144,8 @@ const FeaturedLeagues = () => {
           <h3 className="text-2xl md:text-4xl font-display font-bold mb-3">
             Domestic T20 Leagues
           </h3>
-          <p className="text-muted-foreground max-w-xl mx-auto text-sm">
-            Check out the key domestic T20 tournaments taking place in 2026. See the complete match Schedule & fixtures, including dates, team squads, venues, and points tables for all major domestic leagues worldwide.
+          <p className="text-muted-foreground max-w-full mx-auto text-sm">
+            Check out the key domestic T20 tournaments taking place in 2026. See the complete match <Link href={'/'} className="text-amber-600">Schedule & fixtures</Link>, including dates, team squads, venues, and points tables for all major domestic leagues worldwide.
           </p>
         </motion.div>
 
@@ -204,8 +204,8 @@ const FeaturedLeagues = () => {
           <h3 className="text-2xl md:text-4xl font-display font-bold mb-3">
             Women&apos;s Cricket Leagues
           </h3>
-          <p className="text-muted-foreground max-w-xl mx-auto text-sm">
-            Intro- Check out the key women’s T20 tournaments taking place in 2026. See the complete match schedule & fixtures, including dates, team squads, venues, and points tables for all major women’s cricket leagues worldwide.
+          <p className="text-muted-foreground max-w-full mx-auto text-sm">
+            Intro- Check out the key women’s T20 tournaments taIPLking place in 2026. See the complete match schedule & fixtures, including dates, team squads, venues, and points tables for all major women’s cricket leagues worldwide.
           </p>
         </motion.div>
 
