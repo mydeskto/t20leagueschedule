@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     canonical: 'https://t20leagueschedule.com',
   },
   keywords: [
-   
+
   ],
   robots: {
     index: true,
@@ -233,7 +233,7 @@ export default function RootLayout({
 
         {/* Google tag (gtag.js) - Load lazily to reduce blocking */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-2VB2EJB4MH"
+          src="https://www.googletagmanager.com/gtag/js?id=G-7GWMSYK9Y9"
           strategy="lazyOnload"
         />
 
@@ -243,27 +243,27 @@ export default function RootLayout({
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-2VB2EJB4MH');
+  gtag('config', 'G-7GWMSYK9Y9');
         `}
         </Script>
 
         {/* Google Ads - Must use regular script tag (not Next.js Script) to avoid data-nscript attribute */}
-        <script
+        {/* <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4357484609268769"
           crossOrigin="anonymous"
-        />
+        /> */}
 
         {/* Google Consent Messages - Load lazily */}
-        <Script
+        {/* <Script
           src="https://fundingchoicesmessages.google.com/i/pub-4357484609268769?ers=1"
           strategy="lazyOnload"
-        />
+        /> */}
 
 
         <meta
           name="google-site-verification"
-          content="9qHebp0tN1SV_uN3U3RIVs5Go4Bny923d5yd6_6k6Pc"
+          content="7vUxmls9THBjRt0z-DfAIt2kVUgEyWdnfVps4JZCxpg"
         />
 
 
@@ -289,7 +289,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={`${manrope.variable} ${inter.variable} antialiased`}
       >
-                <Providers>{children}</Providers>
+        <Providers>{children}</Providers>
 
 
         {/* Non-critical scripts loaded at bottom of body for better performance */}
