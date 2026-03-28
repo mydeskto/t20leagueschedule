@@ -226,47 +226,7 @@ const Navbar = () => {
                 )}
               </AnimatePresence>
 
-              {/* Other — quick links */}
-              <button
-                type="button"
-                onClick={() => setMobileOtherOpen((o) => !o)}
-                className="flex w-full items-center justify-between px-4 py-3 rounded-xl text-foreground/90 hover:bg-foreground/5 transition-all font-medium text-left"
-              >
-                Other
-                <ChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-200 ${mobileOtherOpen ? "rotate-180" : ""}`} />
-              </button>
-              <AnimatePresence initial={false}>
-                {mobileOtherOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="pb-2 pl-2 space-y-0.5 border-l border-glass-border ml-4">
-                      <Link
-                        href="/#leagues"
-                        className="block px-3 py-2.5 rounded-lg text-sm text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
-                      >
-                        Featured leagues (home)
-                      </Link>
-                      <Link
-                        href="/faqs"
-                        className="block px-3 py-2.5 rounded-lg text-sm text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
-                      >
-                        FAQs
-                      </Link>
-                      <Link
-                        href="/about-us"
-                        className="block px-3 py-2.5 rounded-lg text-sm text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
-                      >
-                        About
-                      </Link>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              
 
               {/* Domestic T20 */}
               <button
