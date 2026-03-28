@@ -19,7 +19,7 @@ export default function FaqDialogButton() {
         </button>
       </DialogTrigger>
 
-      <DialogContent className="left-auto right-4 top-[8vh] translate-x-0 translate-y-0 h-[76vh] w-md p-5 rounded-2xl border border-black/10 bg-white text-black shadow-2xl">
+      <DialogContent className="left-auto right-4 top-[8vh] translate-x-0 translate-y-0 h-[76vh] w-sm md:w-md p-5 rounded-2xl border border-black/10 bg-white text-black shadow-2xl">
         <DialogHeader>
           <DialogTitle>FAQs</DialogTitle>
         </DialogHeader>

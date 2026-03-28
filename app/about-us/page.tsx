@@ -1,14 +1,12 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 
 export default function AboutUs() {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
       <main className="container-narrow px-4 md:px-8 pt-24 pb-16">
         <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-8">About Us</h1>
 
-        <div className="space-y-8 text-muted-foreground leading-relaxed max-w-3xl">
+        <div className="space-y-8 text-muted-foreground leading-relaxed max-w-full">
           <p className="text-foreground/90">
             Welcome to t20leagueschedule.com, your complete resource for T20 cricket leagues worldwide. Our mission is to
             provide cricket fans with accurate, detailed, and up-to-date information, making it easy for you to follow
@@ -94,7 +92,6 @@ export default function AboutUs() {
           </p>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

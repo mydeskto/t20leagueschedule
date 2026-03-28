@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
       <main className="container-narrow px-4 md:px-8 pt-24 pb-16">
         <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-8">Privacy Policy</h1>
 
-        <div className="space-y-8 text-muted-foreground leading-relaxed max-w-3xl">
+        <div className="space-y-8 text-muted-foreground leading-relaxed max-w-full">
           <p className="text-foreground/90">
             At t20leagueschedule.com, protecting your privacy is important to us. This Privacy Policy explains how we
             collect, use, and safeguard the information you provide while using our website. By accessing or using our

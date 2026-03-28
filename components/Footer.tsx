@@ -91,6 +91,9 @@ const Footer = () => {
             <Link href="/contact-us" className="hover:text-foreground transition-colors duration-300">
               Contact
             </Link>
+            <Link href="/cookie-policy" className="hover:text-foreground transition-colors duration-300">
+              Cookies
+            </Link>
             <Link href="/disclaimer" className="hover:text-foreground transition-colors duration-300">
               Disclaimer
             </Link>

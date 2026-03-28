@@ -6,9 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Calendar, ChevronDown, Clock, ExternalLink, MapPin, Trophy, Users } from "lucide-react";
 import { getLeagueById, getPointsTableYears, getPointsTableForYear, type League, type PointsEntry } from "@/data/leagues";
 import { venueImages } from "@/components/VenuesSection";
-import Navbar from "@/components/Navbar";
 import FAQSection from "@/components/FAQSection";
-import Footer from "@/components/Footer";
 import stadiumHero from "@/public/images/stadium-hero.jpg"
 import Image from "next/image";
 
@@ -67,6 +65,29 @@ const leagueH1: Record<string, string> = {
 
 function slugifyId(s: string) {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "item";
+}
+
+const INTRO_SITE_DOMAIN = "t20leagueschedule.com";
+
+function IntroWithHomeLink({ text }: { text: string }) {
+  const parts = text.split(/(t20leagueschedule\.com)/g);
+  return (
+    <p className="text-base leading-relaxed text-muted-foreground">
+      {parts.map((part, i) =>
+        part === INTRO_SITE_DOMAIN ? (
+          <Link
+            key={i}
+            href="/"
+            className="text-primary font-medium hover:underline underline-offset-4"
+          >
+            {INTRO_SITE_DOMAIN}
+          </Link>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </p>
+  );
 }
 
 function parseMatchStartIso(dateStr: string, timeStr: string): string | undefined {
@@ -259,9 +280,7 @@ const LeaguePage = () => {
 
             {showIntroBlock && (
               <div className="mt-6 max-w-3xl space-y-4">
-                {introText ? (
-                  <p className="text-base leading-relaxed text-muted-foreground">{introText}</p>
-                ) : null}
+                {introText ? <IntroWithHomeLink text={introText} /> : null}
                 {hasExternalLink && ext ? (
                   <a
                     href={ext.href}
@@ -504,8 +523,6 @@ const LeaguePage = () => {
           <FAQSection faqs={league.faqs} title={`${league.shortName} FAQ`} />
         )}
       </div>
-
-      <Footer />
     </div>
   );
 };

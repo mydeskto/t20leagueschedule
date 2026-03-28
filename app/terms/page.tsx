@@ -15,7 +15,7 @@ export default function TermsPage() {
       <main className="container-narrow px-4 md:px-8 pt-24 pb-16">
         <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-8">Terms &amp; Conditions</h1>
 
-        <div className="space-y-8 text-muted-foreground leading-relaxed max-w-3xl">
+        <div className="space-y-8 text-muted-foreground leading-relaxed max-w-full">
           <p className="text-foreground/90">
             Welcome to t20leagueschedule.com. By accessing or using our website, you agree to comply with and be bound by
             the following Terms &amp; Conditions. Please read them carefully before using the site.

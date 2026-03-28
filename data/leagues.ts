@@ -26,7 +26,7 @@ export interface League {
   seoDescription?: string;
   /** League logo path (e.g. /images/IPL-Logo.png) for nav, cards, etc. */
   logo?: string;
-  /** Short on-page intro / SEO body copy */
+  /** Short on-page intro / SEO body copy. Include "t20leagueschedule.com" to auto-link to home (/) on league pages. */
   intro?: string;
   /** Official league site (label shown with link) */
   externalLink?: { label: string; href: string };
@@ -41,6 +41,7 @@ export interface WomenLeague {
   window2026: string;
   seoTitle?: string;
   seoDescription?: string;
+  /** Include "t20leagueschedule.com" to auto-link to home (/) when rendered on league-style pages. */
   intro?: string;
   externalLink?: { label: string; href: string };
 }
@@ -394,7 +395,7 @@ export const leagues: League[] = [
     faqs: [{ question: "When is the BBL season?", answer: "The BBL typically runs from December to February." }],
     logo: "/images/BBL-Logo.png",
     intro:
-      "BBL 2026, Australia's top T20 league, promises thrilling matches and top domestic and international talent. Stay updated with match schedules, teams, the points table, and venues.",
+      "BBL 2026, Australia's top T20 league, promises thrilling matches and top domestic and international talent. Stay updated with match schedules, teams, the points table, and venues at t20leagueschedule.com.",
     externalLink: { label: "Official BBL", href: "https://www.bigbash.com.au/" },
   },
   {
@@ -428,7 +429,7 @@ export const leagues: League[] = [
     faqs: [{ question: "When does CPL start?", answer: "CPL 2026 begins August 15, 2026." }],
     logo: "/images/CPL-Logo.png",
     intro:
-      "Follow CPL 2026, the Caribbean's top T20 competition. Check fixtures, points tables, teams, and venues.",
+      "Follow CPL 2026, the Caribbean's top T20 competition. Check fixtures, points tables, teams, and venues at t20leagueschedule.com.",
     externalLink: { label: "Official CPL", href: "https://www.cplt20.com/" },
   },
   {
@@ -462,7 +463,7 @@ export const leagues: League[] = [
     faqs: [{ question: "What is SA20?", answer: "SA20 is South Africa's premier T20 cricket league." }],
     logo: "/images/SA20-Logo.png",
     intro:
-      "SA20 2026 brings South Africa's top domestic and international talent together. Stay on top of match schedules, point tables, teams, and venues.",
+      "SA20 2026 brings South Africa's top domestic and international talent together. Stay on top of match schedules, point tables, teams, and venues at t20leagueschedule.com.",
     externalLink: { label: "Official SA20", href: "https://www.sa20.co.za/" },
   },
   {

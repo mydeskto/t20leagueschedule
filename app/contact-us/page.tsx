@@ -57,11 +57,10 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
       <main className="container-narrow px-4 md:px-8 pt-24 pb-16">
         <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-8">Contact Us</h1>
 
-        <div className="space-y-10 text-muted-foreground leading-relaxed max-w-3xl mb-16">
+        <div className="space-y-10 text-muted-foreground leading-relaxed max-w-full mb-16">
           <p className="text-foreground/90">
             At t20leagueschedule.com, we value our visitors and are committed to providing clear, helpful, and timely
             support. Whether you have questions, feedback, or suggestions, our team is here to assist you.
@@ -230,7 +229,6 @@ export default function Contact() {
           </form>
         </section>
       </main>
-      <Footer />
       <Toaster position="bottom-right" />
     </div>
   );

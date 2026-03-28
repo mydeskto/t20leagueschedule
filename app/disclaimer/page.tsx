@@ -8,7 +8,7 @@ export default function Disclaimer() {
       <main className="container-narrow px-4 md:px-8 pt-24 pb-16">
         <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-8">Disclaimer</h1>
 
-        <div className="space-y-8 text-muted-foreground leading-relaxed max-w-3xl">
+        <div className="space-y-8 text-muted-foreground leading-relaxed max-w-full">
           <p className="text-foreground/90">
             The information provided on t20leagueschedule.com is for general informational purposes only. While we strive
             to keep all content accurate and up-to-date, we make no guarantees regarding the completeness, reliability,
