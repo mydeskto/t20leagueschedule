@@ -3,7 +3,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, ChevronDown, Clock, MapPin, Trophy, Users } from "lucide-react";
+import { ArrowLeft, Calendar, ChevronDown, Clock, ExternalLink, MapPin, Trophy, Users } from "lucide-react";
 import { getLeagueById, getPointsTableYears, getPointsTableForYear, type League, type PointsEntry } from "@/data/leagues";
 import { venueImages } from "@/components/VenuesSection";
 import Navbar from "@/components/Navbar";
@@ -189,6 +189,11 @@ const LeaguePage = () => {
   const displayYears = pointsTableYears.length > 0 ? pointsTableYears : ["2026"];
   const pointsTableData = getPointsTableForYear(league, selectedPointsYear);
 
+  const introText = league.intro?.trim();
+  const ext = league.externalLink;
+  const hasExternalLink = Boolean(ext?.href?.trim() && ext?.label?.trim());
+  const showIntroBlock = Boolean(introText) || hasExternalLink;
+
   const leagueJsonLd = useMemo(() => {
     const rows = getPointsTableForYear(league, selectedPointsYear);
     return buildLeaguePageJsonLd(league, rows, selectedPointsYear);
@@ -251,6 +256,25 @@ const LeaguePage = () => {
                 {league.teams.length} Teams
               </div>
             </div>
+
+            {showIntroBlock && (
+              <div className="mt-6 max-w-3xl space-y-4">
+                {introText ? (
+                  <p className="text-base leading-relaxed text-muted-foreground">{introText}</p>
+                ) : null}
+                {hasExternalLink && ext ? (
+                  <a
+                    href={ext.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline underline-offset-4"
+                  >
+                    <ExternalLink className="w-4 h-4 shrink-0" aria-hidden />
+                    {ext.label}
+                  </a>
+                ) : null}
+              </div>
+            )}
           </motion.div>
         </div>
       </section>

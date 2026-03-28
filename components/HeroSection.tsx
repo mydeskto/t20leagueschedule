@@ -16,6 +16,8 @@ import {
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import trophy from "@/public/images/trop.png"
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const slides = [
   {
@@ -30,8 +32,10 @@ const slides = [
     period: 'Mar - May 2026',
     prize: '₹20 Crore', // Winner prize (2025 confirmed; 2026 not officially announced yet)
     gradient: 'from-yellow-400 via-orange-500 to-purple-600',
+    glowColor: 'rgba(245, 158, 11, 0.45)',
     accentColor: '#f59e0b',
-    logo: "/images/IPL-Logo.png"
+    logo: "/images/IPL-Logo.png",
+    link: "/ipl-schedule",
   },
   {
     id: 2,
@@ -48,6 +52,7 @@ const slides = [
     glowColor: 'rgba(249, 115, 22, 0.5)',
     accentColor: '#f97316',
     logo: "/images/BBL-Logo.png",
+    link: "/bbl-schedule",
   },
   {
     id: 3,
@@ -64,6 +69,7 @@ const slides = [
     glowColor: 'rgba(239, 68, 68, 0.5)',
     accentColor: '#ef4444',
     logo: "/images/PSL-Logo.png",
+    link: "/psl-schedule",
   },
   {
     id: 4,
@@ -80,6 +86,7 @@ const slides = [
     glowColor: 'rgba(234, 179, 8, 0.5)',
     accentColor: '#eab308',
     logo: "/images/CPL-Logo.png",
+    link: "/cpl-schedule",
   },
   {
     id: 5,
@@ -96,6 +103,7 @@ const slides = [
     glowColor: 'rgba(249, 115, 22, 0.5)',
     accentColor: '#f97316',
     logo: "/images/SA20-Logo.png",
+    link: "/sa20-schedule",
   },
 ];
 
@@ -242,6 +250,7 @@ export default function HeroSection() {
       <div className='w-full flex justify-center items-center'>
         {/* Featured Badge */}
         <motion.div
+          key={`hero-badge-${currentSlide}`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -262,6 +271,7 @@ export default function HeroSection() {
       </div>
       <div className='w-full flex justify-center items-center'>
         <motion.div
+          key={`hero-tagline-${currentSlide}`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -367,20 +377,32 @@ export default function HeroSection() {
                 {/* CTA Buttons */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 0.5, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                   className="flex flex-wrap justify-center lg:justify-start gap-3"
                 >
-                  <Button
-                    size="lg"
-                    className={`bg-gradient-to-r ${slide.gradient} hover:opacity-90 text-white shadow-lg group`}
-                    style={{ boxShadow: `0 0 30px ${slide.glowColor}` }}
+                  <Link
+                    href={slide.link}
+                    prefetch
+                    scroll
+                    className={[
+                      'relative inline-flex items-center justify-center gap-2 min-h-12 px-8 py-3 rounded-xl',
+                      'text-base font-semibold text-white',
+                      `bg-gradient-to-r ${slide.gradient}`,
+                      'ring-1 ring-inset ring-white/30 shadow-lg shadow-black/25',
+                      'hover:brightness-110 hover:ring-white/45 hover:shadow-xl hover:shadow-black/30',
+                      'active:scale-[0.98] active:brightness-95',
+                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background/90',
+                      'transition-[transform,filter,box-shadow] duration-150 ease-out will-change-transform',
+                      'group',
+                    ].join(' ')}
+                    style={{ boxShadow: `0 4px 24px -4px ${slide.glowColor}, 0 0 36px -12px ${slide.glowColor}` }}
                   >
-                    <span className="flex items-center">
+                    <span className="relative z-10 flex items-center gap-2">
                       View Full Schedule
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-150 group-hover:translate-x-0.5" aria-hidden />
                     </span>
-                  </Button>
+                  </Link>
                   <Button
                     size="lg"
                     variant="outline"

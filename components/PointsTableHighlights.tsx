@@ -22,8 +22,8 @@ const PointsTableHighlights = () => {
             <Medal className="w-3.5 h-3.5 text-secondary" />
             <span className="text-xs font-semibold text-secondary uppercase tracking-wider">Standings</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Points Table Highlights</h2>
-          <p className="text-muted-foreground">Top teams across major leagues</p>
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Points Table Highlights          </h2>
+          <p className="text-muted-foreground">See the top teams across all major T20 leagues in 2026. Check current points, matches played, wins, losses, net run rate, and standings for Top Leagues, domestic, and women’s leagues.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

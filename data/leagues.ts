@@ -26,6 +26,10 @@ export interface League {
   seoDescription?: string;
   /** League logo path (e.g. /images/IPL-Logo.png) for nav, cards, etc. */
   logo?: string;
+  /** Short on-page intro / SEO body copy */
+  intro?: string;
+  /** Official league site (label shown with link) */
+  externalLink?: { label: string; href: string };
 }
 
 export interface WomenLeague {
@@ -37,6 +41,8 @@ export interface WomenLeague {
   window2026: string;
   seoTitle?: string;
   seoDescription?: string;
+  intro?: string;
+  externalLink?: { label: string; href: string };
 }
 
 export interface Team {
@@ -104,25 +110,75 @@ export const leagues: League[] = [
     ],
     schedule: [
       { id: "ipl1", team1: "Royal Challengers Bengaluru", team2: "Sunrisers Hyderabad", date: "Mar 28, 2026", time: "19:30", venue: "Bengaluru", status: "upcoming" },
-      { id: "ipl2", team1: "Mumbai Indians", team2: "Kolkata Knight Riders", date: "Mar 29, 2026", time: "19:30", venue: "Mumbai", status: "upcoming" },
-      { id: "ipl3", team1: "Rajasthan Royals", team2: "Chennai Super Kings", date: "Mar 30, 2026", time: "19:30", venue: "Guwahati", status: "upcoming" },
-      { id: "ipl4", team1: "Punjab Kings", team2: "Gujarat Titans", date: "Mar 31, 2026", time: "19:30", venue: "Mullanpur", status: "upcoming" },
-      { id: "ipl5", team1: "Lucknow Super Giants", team2: "Delhi Capitals", date: "Apr 1, 2026", time: "19:30", venue: "Lucknow", status: "upcoming" },
-      { id: "ipl6", team1: "Kolkata Knight Riders", team2: "Sunrisers Hyderabad", date: "Apr 2, 2026", time: "19:30", venue: "Kolkata", status: "upcoming" },
-      { id: "ipl7", team1: "Chennai Super Kings", team2: "Punjab Kings", date: "Apr 3, 2026", time: "19:30", venue: "Chennai", status: "upcoming" },
-      { id: "ipl8", team1: "Delhi Capitals", team2: "Mumbai Indians", date: "Apr 4, 2026", time: "15:30", venue: "Delhi", status: "upcoming" },
-      { id: "ipl9", team1: "Gujarat Titans", team2: "Rajasthan Royals", date: "Apr 4, 2026", time: "19:30", venue: "Ahmedabad", status: "upcoming" },
-      { id: "ipl10", team1: "Sunrisers Hyderabad", team2: "Lucknow Super Giants", date: "Apr 5, 2026", time: "15:30", venue: "Hyderabad", status: "upcoming" },
-      { id: "ipl11", team1: "Royal Challengers Bengaluru", team2: "Chennai Super Kings", date: "Apr 5, 2026", time: "19:30", venue: "Bengaluru", status: "upcoming" },
-      { id: "ipl12", team1: "Kolkata Knight Riders", team2: "Punjab Kings", date: "Apr 6, 2026", time: "19:30", venue: "Kolkata", status: "upcoming" },
-      { id: "ipl13", team1: "Rajasthan Royals", team2: "Mumbai Indians", date: "Apr 7, 2026", time: "19:30", venue: "Guwahati", status: "upcoming" },
-      { id: "ipl14", team1: "Delhi Capitals", team2: "Gujarat Titans", date: "Apr 8, 2026", time: "19:30", venue: "Delhi", status: "upcoming" },
-      { id: "ipl15", team1: "Kolkata Knight Riders", team2: "Lucknow Super Giants", date: "Apr 9, 2026", time: "19:30", venue: "Kolkata", status: "upcoming" },
-      { id: "ipl16", team1: "Rajasthan Royals", team2: "Royal Challengers Bengaluru", date: "Apr 10, 2026", time: "19:30", venue: "Guwahati", status: "upcoming" },
-      { id: "ipl17", team1: "Punjab Kings", team2: "Sunrisers Hyderabad", date: "Apr 11, 2026", time: "15:30", venue: "Mullanpur", status: "upcoming" },
-      { id: "ipl18", team1: "Chennai Super Kings", team2: "Delhi Capitals", date: "Apr 11, 2026", time: "19:30", venue: "Chennai", status: "upcoming" },
-      { id: "ipl19", team1: "Lucknow Super Giants", team2: "Gujarat Titans", date: "Apr 12, 2026", time: "15:30", venue: "Lucknow", status: "upcoming" },
-      { id: "ipl20", team1: "Mumbai Indians", team2: "Royal Challengers Bengaluru", date: "Apr 12, 2026", time: "19:30", venue: "Mumbai", status: "upcoming" },
+      { id: "ipl2", team1: "Kolkata Knight Riders", team2: "Mumbai Indians", date: "Mar 29, 2026", time: "19:30", venue: "Kolkata", status: "upcoming" },
+      { id: "ipl3", team1: "Chennai Super Kings", team2: "Rajasthan Royals", date: "Mar 30, 2026", time: "19:30", venue: "Chennai", status: "upcoming" },
+      { id: "ipl4", team1: "Gujarat Titans", team2: "Punjab Kings", date: "Mar 31, 2026", time: "19:30", venue: "Ahmedabad", status: "upcoming" },
+      { id: "ipl5", team1: "Delhi Capitals", team2: "Lucknow Super Giants", date: "Apr 1, 2026", time: "19:30", venue: "Delhi", status: "upcoming" },
+      { id: "ipl6", team1: "Sunrisers Hyderabad", team2: "Kolkata Knight Riders", date: "Apr 2, 2026", time: "19:30", venue: "Hyderabad", status: "upcoming" },
+      { id: "ipl7", team1: "Punjab Kings", team2: "Chennai Super Kings", date: "Apr 3, 2026", time: "19:30", venue: "Mullanpur", status: "upcoming" },
+      { id: "ipl8", team1: "Mumbai Indians", team2: "Delhi Capitals", date: "Apr 4, 2026", time: "15:30", venue: "Mumbai", status: "upcoming" },
+      { id: "ipl9", team1: "Rajasthan Royals", team2: "Gujarat Titans", date: "Apr 4, 2026", time: "19:30", venue: "Guwahati", status: "upcoming" },
+      { id: "ipl10", team1: "Lucknow Super Giants", team2: "Sunrisers Hyderabad", date: "Apr 5, 2026", time: "15:30", venue: "Lucknow", status: "upcoming" },
+      { id: "ipl11", team1: "Chennai Super Kings", team2: "Royal Challengers Bengaluru", date: "Apr 5, 2026", time: "19:30", venue: "Chennai", status: "upcoming" },
+      { id: "ipl12", team1: "Punjab Kings", team2: "Kolkata Knight Riders", date: "Apr 6, 2026", time: "19:30", venue: "Mullanpur", status: "upcoming" },
+      { id: "ipl13", team1: "Mumbai Indians", team2: "Rajasthan Royals", date: "Apr 7, 2026", time: "19:30", venue: "Mumbai", status: "upcoming" },
+      { id: "ipl14", team1: "Gujarat Titans", team2: "Delhi Capitals", date: "Apr 8, 2026", time: "19:30", venue: "Ahmedabad", status: "upcoming" },
+      { id: "ipl15", team1: "Lucknow Super Giants", team2: "Kolkata Knight Riders", date: "Apr 9, 2026", time: "19:30", venue: "Lucknow", status: "upcoming" },
+      { id: "ipl16", team1: "Royal Challengers Bengaluru", team2: "Rajasthan Royals", date: "Apr 10, 2026", time: "19:30", venue: "Bengaluru", status: "upcoming" },
+      { id: "ipl17", team1: "Sunrisers Hyderabad", team2: "Punjab Kings", date: "Apr 11, 2026", time: "15:30", venue: "Hyderabad", status: "upcoming" },
+      { id: "ipl18", team1: "Delhi Capitals", team2: "Chennai Super Kings", date: "Apr 11, 2026", time: "19:30", venue: "Delhi", status: "upcoming" },
+      { id: "ipl19", team1: "Gujarat Titans", team2: "Lucknow Super Giants", date: "Apr 12, 2026", time: "15:30", venue: "Ahmedabad", status: "upcoming" },
+      { id: "ipl20", team1: "Royal Challengers Bengaluru", team2: "Mumbai Indians", date: "Apr 12, 2026", time: "19:30", venue: "Bengaluru", status: "upcoming" },
+      { id: "ipl21", team1: "Rajasthan Royals", team2: "Sunrisers Hyderabad", date: "Apr 13, 2026", time: "19:30", venue: "Guwahati", status: "upcoming" },
+      { id: "ipl22", team1: "Kolkata Knight Riders", team2: "Chennai Super Kings", date: "Apr 14, 2026", time: "19:30", venue: "Kolkata", status: "upcoming" },
+      { id: "ipl23", team1: "Lucknow Super Giants", team2: "Royal Challengers Bengaluru", date: "Apr 15, 2026", time: "19:30", venue: "Lucknow", status: "upcoming" },
+      { id: "ipl24", team1: "Punjab Kings", team2: "Mumbai Indians", date: "Apr 16, 2026", time: "19:30", venue: "Mullanpur", status: "upcoming" },
+      { id: "ipl25", team1: "Kolkata Knight Riders", team2: "Gujarat Titans", date: "Apr 17, 2026", time: "19:30", venue: "Kolkata", status: "upcoming" },
+      { id: "ipl26", team1: "Delhi Capitals", team2: "Royal Challengers Bengaluru", date: "Apr 18, 2026", time: "15:30", venue: "Delhi", status: "upcoming" },
+      { id: "ipl27", team1: "Chennai Super Kings", team2: "Sunrisers Hyderabad", date: "Apr 18, 2026", time: "19:30", venue: "Chennai", status: "upcoming" },
+      { id: "ipl28", team1: "Rajasthan Royals", team2: "Kolkata Knight Riders", date: "Apr 19, 2026", time: "15:30", venue: "Guwahati", status: "upcoming" },
+      { id: "ipl29", team1: "Lucknow Super Giants", team2: "Punjab Kings", date: "Apr 19, 2026", time: "19:30", venue: "Lucknow", status: "upcoming" },
+      { id: "ipl30", team1: "Mumbai Indians", team2: "Gujarat Titans", date: "Apr 20, 2026", time: "19:30", venue: "Mumbai", status: "upcoming" },
+      { id: "ipl31", team1: "Delhi Capitals", team2: "Sunrisers Hyderabad", date: "Apr 21, 2026", time: "19:30", venue: "Delhi", status: "upcoming" },
+      { id: "ipl32", team1: "Rajasthan Royals", team2: "Lucknow Super Giants", date: "Apr 22, 2026", time: "19:30", venue: "Guwahati", status: "upcoming" },
+      { id: "ipl33", team1: "Chennai Super Kings", team2: "Mumbai Indians", date: "Apr 23, 2026", time: "19:30", venue: "Chennai", status: "upcoming" },
+      { id: "ipl34", team1: "Gujarat Titans", team2: "Royal Challengers Bengaluru", date: "Apr 24, 2026", time: "19:30", venue: "Ahmedabad", status: "upcoming" },
+      { id: "ipl35", team1: "Punjab Kings", team2: "Delhi Capitals", date: "Apr 25, 2026", time: "15:30", venue: "Mullanpur", status: "upcoming" },
+      { id: "ipl36", team1: "Sunrisers Hyderabad", team2: "Rajasthan Royals", date: "Apr 25, 2026", time: "19:30", venue: "Hyderabad", status: "upcoming" },
+      { id: "ipl37", team1: "Chennai Super Kings", team2: "Gujarat Titans", date: "Apr 26, 2026", time: "15:30", venue: "Chennai", status: "upcoming" },
+      { id: "ipl38", team1: "Kolkata Knight Riders", team2: "Lucknow Super Giants", date: "Apr 26, 2026", time: "19:30", venue: "Kolkata", status: "upcoming" },
+      { id: "ipl39", team1: "Royal Challengers Bengaluru", team2: "Delhi Capitals", date: "Apr 27, 2026", time: "19:30", venue: "Bengaluru", status: "upcoming" },
+      { id: "ipl40", team1: "Rajasthan Royals", team2: "Punjab Kings", date: "Apr 28, 2026", time: "19:30", venue: "Guwahati", status: "upcoming" },
+      { id: "ipl41", team1: "Sunrisers Hyderabad", team2: "Mumbai Indians", date: "Apr 29, 2026", time: "19:30", venue: "Hyderabad", status: "upcoming" },
+      { id: "ipl42", team1: "Royal Challengers Bengaluru", team2: "Gujarat Titans", date: "Apr 30, 2026", time: "19:30", venue: "Bengaluru", status: "upcoming" },
+      { id: "ipl43", team1: "Delhi Capitals", team2: "Rajasthan Royals", date: "May 1, 2026", time: "19:30", venue: "Delhi", status: "upcoming" },
+      { id: "ipl44", team1: "Mumbai Indians", team2: "Chennai Super Kings", date: "May 2, 2026", time: "19:30", venue: "Mumbai", status: "upcoming" },
+      { id: "ipl45", team1: "Kolkata Knight Riders", team2: "Sunrisers Hyderabad", date: "May 3, 2026", time: "15:30", venue: "Kolkata", status: "upcoming" },
+      { id: "ipl46", team1: "Punjab Kings", team2: "Gujarat Titans", date: "May 3, 2026", time: "19:30", venue: "Mullanpur", status: "upcoming" },
+      { id: "ipl47", team1: "Lucknow Super Giants", team2: "Mumbai Indians", date: "May 4, 2026", time: "19:30", venue: "Lucknow", status: "upcoming" },
+      { id: "ipl48", team1: "Chennai Super Kings", team2: "Delhi Capitals", date: "May 5, 2026", time: "19:30", venue: "Chennai", status: "upcoming" },
+      { id: "ipl49", team1: "Punjab Kings", team2: "Sunrisers Hyderabad", date: "May 6, 2026", time: "19:30", venue: "Mullanpur", status: "upcoming" },
+      { id: "ipl50", team1: "Royal Challengers Bengaluru", team2: "Lucknow Super Giants", date: "May 7, 2026", time: "19:30", venue: "Bengaluru", status: "upcoming" },
+      { id: "ipl51", team1: "Kolkata Knight Riders", team2: "Delhi Capitals", date: "May 8, 2026", time: "19:30", venue: "Kolkata", status: "upcoming" },
+      { id: "ipl52", team1: "Gujarat Titans", team2: "Rajasthan Royals", date: "May 9, 2026", time: "19:30", venue: "Ahmedabad", status: "upcoming" },
+      { id: "ipl53", team1: "Lucknow Super Giants", team2: "Chennai Super Kings", date: "May 10, 2026", time: "15:30", venue: "Lucknow", status: "upcoming" },
+      { id: "ipl54", team1: "Mumbai Indians", team2: "Royal Challengers Bengaluru", date: "May 10, 2026", time: "19:30", venue: "Mumbai", status: "upcoming" },
+      { id: "ipl55", team1: "Delhi Capitals", team2: "Punjab Kings", date: "May 11, 2026", time: "19:30", venue: "Delhi", status: "upcoming" },
+      { id: "ipl56", team1: "Sunrisers Hyderabad", team2: "Gujarat Titans", date: "May 12, 2026", time: "19:30", venue: "Hyderabad", status: "upcoming" },
+      { id: "ipl57", team1: "Kolkata Knight Riders", team2: "Royal Challengers Bengaluru", date: "May 13, 2026", time: "19:30", venue: "Kolkata", status: "upcoming" },
+      { id: "ipl58", team1: "Mumbai Indians", team2: "Punjab Kings", date: "May 14, 2026", time: "19:30", venue: "Mumbai", status: "upcoming" },
+      { id: "ipl59", team1: "Chennai Super Kings", team2: "Lucknow Super Giants", date: "May 15, 2026", time: "19:30", venue: "Chennai", status: "upcoming" },
+      { id: "ipl60", team1: "Gujarat Titans", team2: "Kolkata Knight Riders", date: "May 16, 2026", time: "19:30", venue: "Ahmedabad", status: "upcoming" },
+      { id: "ipl61", team1: "Royal Challengers Bengaluru", team2: "Punjab Kings", date: "May 17, 2026", time: "15:30", venue: "Bengaluru", status: "upcoming" },
+      { id: "ipl62", team1: "Rajasthan Royals", team2: "Delhi Capitals", date: "May 17, 2026", time: "19:30", venue: "Guwahati", status: "upcoming" },
+      { id: "ipl63", team1: "Sunrisers Hyderabad", team2: "Chennai Super Kings", date: "May 18, 2026", time: "19:30", venue: "Hyderabad", status: "upcoming" },
+      { id: "ipl64", team1: "Lucknow Super Giants", team2: "Rajasthan Royals", date: "May 19, 2026", time: "19:30", venue: "Lucknow", status: "upcoming" },
+      { id: "ipl65", team1: "Mumbai Indians", team2: "Kolkata Knight Riders", date: "May 20, 2026", time: "19:30", venue: "Mumbai", status: "upcoming" },
+      { id: "ipl66", team1: "Gujarat Titans", team2: "Chennai Super Kings", date: "May 21, 2026", time: "19:30", venue: "Ahmedabad", status: "upcoming" },
+      { id: "ipl67", team1: "Royal Challengers Bengaluru", team2: "Sunrisers Hyderabad", date: "May 22, 2026", time: "19:30", venue: "Bengaluru", status: "upcoming" },
+      { id: "ipl68", team1: "Punjab Kings", team2: "Lucknow Super Giants", date: "May 23, 2026", time: "19:30", venue: "Mullanpur", status: "upcoming" },
+      { id: "ipl69", team1: "Rajasthan Royals", team2: "Mumbai Indians", date: "May 24, 2026", time: "15:30", venue: "Guwahati", status: "upcoming" },
+      { id: "ipl70", team1: "Delhi Capitals", team2: "Kolkata Knight Riders", date: "May 24, 2026", time: "19:30", venue: "Delhi", status: "upcoming" },
     ],
     pointsTable: [
       { team: "Royal Challengers Bengaluru", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
@@ -175,12 +231,15 @@ export const leagues: League[] = [
       { name: "Rajiv Gandhi International Stadium", city: "Hyderabad", capacity: "55,000", image: "wankhede" },
     ],
     faqs: [
-      { question: "When does IPL 2026 start?", answer: "IPL 2026 begins on March 28, 2026 (RCB vs SRH at Bengaluru) and the final is on May 31, 2026. The first phase (20 matches) runs till April 12." },
+      { question: "When does IPL 2026 start?", answer: "IPL 2026 begins on March 28, 2026 (RCB vs SRH at Bengaluru). The league stage lists 70 matches through late May; playoffs and the final follow the official IPL calendar (typically through May 31)." },
       { question: "How many teams are in IPL?", answer: "There are 10 teams: RCB, SRH, MI, KKR, RR, CSK, Punjab Kings, Gujarat Titans, Lucknow Super Giants, and Delhi Capitals." },
     ],
     seoTitle: "IPL 2026 Schedule | Fixtures, Points Table, Teams & Venues",
     seoDescription: "Check the complete IPL 2026 schedule with match fixtures, teams, venues, and updated points table. Stay updated with every match.",
     logo: "/images/IPL-Logo.png",
+    intro:
+      "Season 19 of the Indian Premier League 2026 kicks off on 28 March. Follow all 10 teams, full match schedules, venues, and points tables. Stay updated with IPL 2026 fixtures, team squads, and live results from every game, only on t20leagueschedule.com.",
+    externalLink: { label: "Official IPL", href: "https://www.iplt20.com/" },
   },
   {
     id: "psl-schedule",
@@ -251,25 +310,25 @@ export const leagues: League[] = [
       { id: "psl44", team1: "TBD", team2: "TBD", date: "May 3, 2026", time: "19:00", venue: "Lahore", status: "upcoming", result: "Final" },
     ],
     pointsTable: [
-      { team: "Islamabad United", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
-      { team: "Karachi Kings", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
-      { team: "Lahore Qalandars", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
-      { team: "Multan Sultans", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
-      { team: "Peshawar Zalmi", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
-      { team: "Quetta Gladiators", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
-      { team: "Hyderabad Kingsmen", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
-      { team: "Rawalpindi Pindiz", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+      { team: "Lahore Qalandars", played: 1, won: 1, lost: 0, nrr: "+3.450", points: 2 },
+      { team: "Karachi Kings", played: 1, won: 1, lost: 0, nrr: "+0.700", points: 2 },
+      { team: "Peshawar Zalmi", played: 1, won: 1, lost: 0, nrr: "+0.674", points: 2 },
+      { team: "Rawalpindi Pindiz", played: 1, won: 0, lost: 1, nrr: "-0.674", points: 0 },
+      { team: "Quetta Gladiators", played: 1, won: 0, lost: 1, nrr: "-0.700", points: 0 },
+      { team: "Hyderabad Kingsmen", played: 1, won: 0, lost: 1, nrr: "-3.450", points: 0 },
+      { team: "Islamabad United", played: 0, won: 0, lost: 0, nrr: "+0.000", points: 0 },
+      { team: "Multan Sultans", played: 0, won: 0, lost: 0, nrr: "+0.000", points: 0 },
     ],
     pointsTableByYear: {
       "2026": [
-        { team: "Islamabad United", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
-        { team: "Karachi Kings", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
-        { team: "Lahore Qalandars", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
-        { team: "Multan Sultans", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
-        { team: "Peshawar Zalmi", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
-        { team: "Quetta Gladiators", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
-        { team: "Hyderabad Kingsmen", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
-        { team: "Rawalpindi Pindiz", played: 0, won: 0, lost: 0, nrr: "0.000", points: 0 },
+        { team: "Lahore Qalandars", played: 1, won: 1, lost: 0, nrr: "+3.450", points: 2 },
+        { team: "Karachi Kings", played: 1, won: 1, lost: 0, nrr: "+0.700", points: 2 },
+        { team: "Peshawar Zalmi", played: 1, won: 1, lost: 0, nrr: "+0.674", points: 2 },
+        { team: "Rawalpindi Pindiz", played: 1, won: 0, lost: 1, nrr: "-0.674", points: 0 },
+        { team: "Quetta Gladiators", played: 1, won: 0, lost: 1, nrr: "-0.700", points: 0 },
+        { team: "Hyderabad Kingsmen", played: 1, won: 0, lost: 1, nrr: "-3.450", points: 0 },
+        { team: "Islamabad United", played: 0, won: 0, lost: 0, nrr: "+0.000", points: 0 },
+        { team: "Multan Sultans", played: 0, won: 0, lost: 0, nrr: "+0.000", points: 0 },
       ],
       "2025": [
         { team: "Quetta Gladiators", played: 10, won: 7, lost: 2, nrr: "+1.393", points: 15 },
@@ -298,6 +357,9 @@ export const leagues: League[] = [
     seoTitle: "PSL 2026 Schedule | Fixtures, Points Table, Teams & Venues",
     seoDescription: "Check the complete PSL 2026 schedule with match fixtures, teams, venues, and updated points table. Stay updated with every match.",
     logo: "/images/PSL-Logo.png",
+    intro:
+      "PSL 2026 starts on 26 March with 6 top teams competing for glory. Get full match schedules, points table, teams, venues, and FAQs. Follow every fixture and live result at t20leagueschedule.com to never miss Pakistan's premier T20 action.",
+    externalLink: { label: "Official PSL", href: "https://www.psl-t20.com/" },
   },
   { 
     id: "bbl-schedule",
@@ -331,6 +393,9 @@ export const leagues: League[] = [
     venues: [{ name: "Melbourne Cricket Ground", city: "Melbourne", capacity: "100,024", image: "mcg" }],
     faqs: [{ question: "When is the BBL season?", answer: "The BBL typically runs from December to February." }],
     logo: "/images/BBL-Logo.png",
+    intro:
+      "BBL 2026, Australia's top T20 league, promises thrilling matches and top domestic and international talent. Stay updated with match schedules, teams, the points table, and venues.",
+    externalLink: { label: "Official BBL", href: "https://www.bigbash.com.au/" },
   },
   {
     id: "cpl-schedule",
@@ -362,6 +427,9 @@ export const leagues: League[] = [
     venues: [{ name: "Queen's Park Oval", city: "Port of Spain", capacity: "18,000", image: "dubai" }],
     faqs: [{ question: "When does CPL start?", answer: "CPL 2026 begins August 15, 2026." }],
     logo: "/images/CPL-Logo.png",
+    intro:
+      "Follow CPL 2026, the Caribbean's top T20 competition. Check fixtures, points tables, teams, and venues.",
+    externalLink: { label: "Official CPL", href: "https://www.cplt20.com/" },
   },
   {
     id: "sa20-schedule",
@@ -393,6 +461,9 @@ export const leagues: League[] = [
     venues: [{ name: "Newlands Cricket Ground", city: "Cape Town", capacity: "25,000", image: "mcg" }],
     faqs: [{ question: "What is SA20?", answer: "SA20 is South Africa's premier T20 cricket league." }],
     logo: "/images/SA20-Logo.png",
+    intro:
+      "SA20 2026 brings South Africa's top domestic and international talent together. Stay on top of match schedules, point tables, teams, and venues.",
+    externalLink: { label: "Official SA20", href: "https://www.sa20.co.za/" },
   },
   {
     id: "ilt20-schedule",
@@ -423,6 +494,9 @@ export const leagues: League[] = [
     venues: [{ name: "Dubai International Stadium", city: "Dubai", capacity: "25,000", image: "dubai" }],
     faqs: [{ question: "Where is ILT20 played?", answer: "ILT20 is played in the United Arab Emirates." }],
     logo: "/images/ILT-Logo.png",
+    intro:
+      "Follow ILT20 2026, UAE's premier T20 league featuring international stars. Explore full fixtures, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official ILT20", href: "https://www.ilt20.ae/" },
   },
   {
     id: "bpl-schedule",
@@ -453,6 +527,9 @@ export const leagues: League[] = [
     venues: [{ name: "Sher-e-Bangla Stadium", city: "Dhaka", capacity: "26,000", image: "lahore" }],
     faqs: [{ question: "When does BPL start?", answer: "BPL 2026 starts February 1, 2026." }],
     logo: "/images/BPL-Logo.png",
+    intro:
+      "BPL 2026, Bangladesh's leading T20 league, features the best local and international players. Check match schedules, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official BPL", href: "https://www.bpl-t20.com/" },
   },
   {
     id: "lpl-schedule",
@@ -483,6 +560,9 @@ export const leagues: League[] = [
     venues: [{ name: "Sher-e-Bangla Stadium", city: "Dhaka", capacity: "26,000", image: "lahore" }],
     faqs: [{ question: "When does LPL 2026 run?", answer: "LPL 2026 runs from July 8 to August 8, 2026." }],
     logo: "/images/LPL-Logo.png",
+    intro:
+      "LPL 2026 showcases Sri Lanka's top T20 talent. Stay updated with fixtures, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official LPL", href: "https://www.lpl.lk/" },
   },
   {
     id: "mlc-schedule",
@@ -513,6 +593,9 @@ export const leagues: League[] = [
     venues: [{ name: "Sher-e-Bangla Stadium", city: "Dhaka", capacity: "26,000", image: "lahore" }],
     faqs: [{ question: "When is MLC 2026?", answer: "MLC 2026 is expected June–July 2026." }],
     logo: "/images/MLC-Logo.png",
+    intro:
+      "MLC 2026, USA's top professional T20 league, features international and local stars. Check full match schedules, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official MLC", href: "https://www.majorleaguecricket.com/" },
   },
   {
     id: "npl-schedule",
@@ -543,6 +626,9 @@ export const leagues: League[] = [
     venues: [{ name: "Sher-e-Bangla Stadium", city: "Dhaka", capacity: "26,000", image: "lahore" }],
     faqs: [{ question: "When is NPL 2026?", answer: "NPL 2026 is expected October–November 2026." }],
     logo: "/images/NPL-Logo.png",
+    intro:
+      "Follow NPL 2026, Nepal's top T20 league, with exciting local and international talent. Stay on top of match schedules, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official NPL", href: "https://www.cricnepal.com/npl" },
   },
   {
     id: "the-hundred-schedule",
@@ -573,6 +659,9 @@ export const leagues: League[] = [
     venues: [{ name: "The Oval", city: "London", capacity: "25,500", image: "mcg" }],
     faqs: [{ question: "What is The Hundred?", answer: "The Hundred is a unique 100-ball cricket format played in England." }],
     logo: "/images/100-Logo.png",
+    intro:
+      "Follow The Hundred 2026, England's 100-ball tournament with top domestic and international stars. Check fixtures, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official Hundred", href: "https://www.thehundred.com/" },
   },
 ];
 
@@ -585,7 +674,10 @@ export const womenLeagues: WomenLeague[] = [
     seasonsTill2026: 4,
     window2026: "Feb–Mar 2026 (expected)",
     seoTitle:"WPL 2026 Schedule | Fixtures, Teams & Points Table",
-    seoDescription:"Check WPL 2026 full schedule including match fixtures, team squads, points table, and venues. Stay updated with every Women's Premier League match in India."
+    seoDescription:"Check WPL 2026 full schedule including match fixtures, team squads, points table, and venues. Stay updated with every Women's Premier League match in India.",
+    intro:
+      "Follow WPL 2026, India's top women's T20 league. Stay updated with full fixtures, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official WPL", href: "https://www.wpl.t20/" },
   },
   {
     id: "wbbl",
@@ -595,7 +687,10 @@ export const womenLeagues: WomenLeague[] = [
     seasonsTill2026: 12,
     window2026: "Oct–Nov 2026",
     seoTitle:"WBBL 2026 Schedule | Fixtures, Teams & Points Table",
-    seoDescription:"Explore WBBL 2026 complete schedule with match dates, team squads, points table, and venues. Get all updates for every Women's Big Bash League match in Australia."
+    seoDescription:"Explore WBBL 2026 complete schedule with match dates, team squads, points table, and venues. Get all updates for every Women's Big Bash League match in Australia.",
+    intro:
+      "WBBL 2026 features Australia's top women's T20 teams. Check complete match schedules, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official WBBL", href: "https://www.cricket.com.au/wbbl" },
   },
   { id: "wcpl", 
     name: "Women's Caribbean Premier League", 
@@ -604,7 +699,10 @@ export const womenLeagues: WomenLeague[] = [
     seasonsTill2026: 5, 
     window2026: "Aug 2026",
     seoTitle:"WCPL 2026 Schedule | Fixtures, Teams & Points Table",
-    seoDescription:"Check WCPL 2026 full schedule including match fixtures, team squads, points table, and venues. Stay updated with every Women's Caribbean Premier League match."
+    seoDescription:"Check WCPL 2026 full schedule including match fixtures, team squads, points table, and venues. Stay updated with every Women's Caribbean Premier League match.",
+    intro:
+      "Follow WCPL 2026, the West Indies' top women's T20 league. Get full fixtures, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official WCPL", href: "https://www.cplt20.com/women" },
   },
   { id: "the-hundred-women", 
     name: "The Hundred Women", 
@@ -613,7 +711,10 @@ export const womenLeagues: WomenLeague[] = [
     seasonsTill2026: 6, 
     window2026: "Jul–Aug 2026",
     seoTitle:"The Hundred Women 2026 Schedule | Fixtures & Teams",
-    seoDescription:"Explore The Hundred Women 2026 complete schedule including match dates, team squads, points table, and venues. Get updates for every match of The Hundred Women's tournament in England."
+    seoDescription:"Explore The Hundred Women 2026 complete schedule including match dates, team squads, points table, and venues. Get updates for every match of The Hundred Women's tournament in England.",
+    intro:
+      "The Hundred Women 2026 brings England's top female players together. Stay updated with full match schedules, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official Hundred Women", href: "https://www.thehundred.com/women" },
   },
 ];
 
@@ -639,7 +740,10 @@ export const DomesticLeagues: League[] = [
     seoTitle: "T20 Blast 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Check the complete T20 Blast 2026 schedule with match fixtures, teams, and updated points table. Stay updated with every match.",
-    logo: "/images/domestic/T20 Blast.jpg.jpeg"
+    logo: "/images/domestic/T20 Blast.jpg.jpeg",
+    intro:
+      "Follow T20 Blast 2026, England & Wales' top domestic T20 competition. Get complete match schedules, points table, teams, and FAQs at t20leagueschedule.com and never miss a thrilling fixture this season.",
+    externalLink: { label: "Official T20 Blast", href: "https://www.ecb.co.uk/t20-blast" },
   },
   {
     id: "syed-mushtaq-ali-trophy",
@@ -661,7 +765,10 @@ export const DomesticLeagues: League[] = [
     seoTitle: "SMAT 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Explore Syed Mushtaq Ali Trophy (SMAT) 2026 expected window, fixtures, points table, teams, and venues for India's domestic T20 season.",
-    logo: "/images/domestic/Syed_Mushtaq_Ali_Trophy logo.png"
+    logo: "/images/domestic/Syed_Mushtaq_Ali_Trophy logo.png",
+    intro:
+      "Syed Mushtaq Ali Trophy 2026 features India's best domestic T20 teams. Stay updated with full fixtures, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official SMAT", href: "https://www.bcci.tv/domestic/SMAT" },
   },
   {
     id: "national-t20-cup",
@@ -683,7 +790,10 @@ export const DomesticLeagues: League[] = [
     seoTitle: "National T20 Cup 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Check Pakistan National T20 Cup 2026 expected window, fixtures, points table, teams, and venues for Pakistan domestic T20 cricket.",
-    logo: "/images/domestic/National_T20_Cup__Logo.png"
+    logo: "/images/domestic/National_T20_Cup__Logo.png",
+    intro:
+      "Follow National T20 Cup 2026, Pakistan's premier domestic T20 tournament. Check full match schedules, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official NT20", href: "https://www.pcb.com.pk/" },
   },
   {
     id: "super-smash",
@@ -705,7 +815,10 @@ export const DomesticLeagues: League[] = [
     seoTitle: "Super Smash 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Explore Super Smash 2026 expected window, fixtures, points table, teams, and venues for New Zealand domestic T20 cricket.",
-    logo: "/images/domestic/Super Smash logo.jpg.jpeg"
+    logo: "/images/domestic/Super Smash logo.jpg.jpeg",
+    intro:
+      "Stay updated with Super Smash 2026, New Zealand's top domestic T20 league. Find full match schedules, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official Super Smash", href: "https://www.nzc.nz/competitions/super-smash/" },
   },
   {
     id: "csa-t20-challenge",
@@ -727,7 +840,10 @@ export const DomesticLeagues: League[] = [
     seoTitle: "CSA T20 Challenge 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Check CSA T20 Challenge 2026 expected window, fixtures, points table, teams, and venues for South Africa domestic T20 cricket.",
-    logo: "/images/domestic/CSA_T20_Challenge_Logo.png"
+    logo: "/images/domestic/CSA_T20_Challenge_Logo.png",
+    intro:
+      "Follow CSA T20 Challenge 2026, South Africa's premier T20 competition. Check fixtures, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official CSA T20", href: "https://www.cricket.co.za/t20" },
   },
   {
     id: "shpageeza-cricket-league",
@@ -749,7 +865,10 @@ export const DomesticLeagues: League[] = [
     seoTitle: "Shpageeza League 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Explore Shpageeza Cricket League (SCL) 2026 expected window, fixtures, points table, teams, and venues for Afghanistan domestic T20 cricket.",
-    logo: "/images/domestic/Shpagiza_league_logo.png"
+    logo: "/images/domestic/Shpagiza_league_logo.png",
+    intro:
+      "Shpageeza Cricket League 2026 brings Afghanistan's best domestic and international players together. Follow fixtures, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official SCL", href: "https://www.afghanistancricket.af/" },
   },
   {
     id: "global-t20-canada",
@@ -771,7 +890,9 @@ export const DomesticLeagues: League[] = [
     seoTitle: "GT20 Canada 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Check Global T20 Canada (GT20) 2026 expected window, fixtures, points table, teams, and venues for Canada's domestic T20 season.",
-    
+    intro:
+      "Stay updated with Global T20 Canada 2026, featuring top domestic and international players. Complete match schedules, points table, teams, venues, and FAQs are available at t20leagueschedule.com.",
+    externalLink: { label: "Official GT20", href: "https://www.globalt20.ca/" },
   },
   {
     id: "minor-league-cricket",
@@ -793,7 +914,10 @@ export const DomesticLeagues: League[] = [
     seoTitle: "MiLC 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Explore Minor League Cricket (MiLC) 2026 expected window, fixtures, points table, teams, and venues for USA domestic T20 cricket.",
-    logo: "/images/domestic/Minor League Cricket_ logo.jpg.jpeg"
+    logo: "/images/domestic/Minor League Cricket_ logo.jpg.jpeg",
+    intro:
+      "MiLC 2026 is USA's premier T20 cricket league with top domestic talent. Follow full fixtures, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official MiLC", href: "https://minorleaguecricket.com/" },
   },
   {
     id: "tamil-nadu-premier-league",
@@ -815,7 +939,10 @@ export const DomesticLeagues: League[] = [
     seoTitle: "TNPL 2026 Schedule | Fixtures, Teams & Points Table",
     seoDescription:
       "Check Tamil Nadu Premier League (TNPL) 2026 expected window, fixtures, points table, teams, and venues for India's domestic T20 season.",
-    logo: "/images/domestic/Tamil Nadu Premier League logo.jpg.jpeg"
+    logo: "/images/domestic/Tamil Nadu Premier League logo.jpg.jpeg",
+    intro:
+      "TNPL 2026 showcases Tamil Nadu's top domestic teams. Get full match schedules, points table, teams, venues, and FAQs at t20leagueschedule.com.",
+    externalLink: { label: "Official TNPL", href: "https://www.tnpl.tnca.cricket/" },
   },
 ];
 

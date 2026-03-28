@@ -41,6 +41,7 @@ const VenuesSection = () => {
           </div>
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Iconic Stadiums</h2>
           <p className="text-muted-foreground">Where legends are made</p>
+          <p className="text-muted-foreground">Discover the iconic stadiums where T20 cricket legends are made. Get details on match venues, capacities, locations, and the leagues that play there, including IPL, PSL, BBL, CPL, domestic, and women’s tournaments.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

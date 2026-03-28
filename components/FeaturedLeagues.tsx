@@ -80,8 +80,8 @@ const FeaturedLeagues = () => {
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
             World's Top Cricket Leagues
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-base">
-            Explore the biggest T20 cricket leagues across the globe
+          <p className="text-muted-foreground max-w-full mx-auto text-base">
+          Check out the <Link  href={'/'} className="text-amber-600">latest schedules</Link>, match dates, and team details for the biggest T20 cricket leagues worldwide. Stay updated with all fixtures, points tables, and venues for IPL,PSL ,BBL, CPL, & other top leagues.
           </p>
         </motion.div>
 
@@ -123,7 +123,7 @@ const FeaturedLeagues = () => {
               </div>
 
               <div className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                Explore <ArrowRight className="w-4 h-4" />
+                View  {league.shortName} Schedule <ArrowRight className="w-4 h-4" />
               </div>
               </div>
             </Link>
@@ -145,7 +145,7 @@ const FeaturedLeagues = () => {
             Domestic T20 Leagues
           </h3>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm">
-            Key domestic T20 tournaments and their 2026 windows
+          Check out the key domestic T20 tournaments taking place in 2026. See the complete match Schedule & fixtures, including dates, team squads, venues, and points tables for all major domestic leagues worldwide.
           </p>
         </motion.div>
 
@@ -205,7 +205,7 @@ const FeaturedLeagues = () => {
             Women&apos;s Cricket Leagues
           </h3>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm">
-            Major women&apos;s T20 leagues and their 2026 windows
+          Intro- Check out the key women’s T20 tournaments taking place in 2026. See the complete match schedule & fixtures, including dates, team squads, venues, and points tables for all major women’s cricket leagues worldwide.
           </p>
         </motion.div>
 

@@ -17,7 +17,7 @@ const UpcomingMatches = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-4"
         >
           <div className="inline-flex items-center gap-2 bg-destructive/10 border border-destructive/20 px-4 py-1.5 rounded-full mb-5">
             <Flame className="w-3.5 h-3.5 text-destructive" />
@@ -26,7 +26,7 @@ const UpcomingMatches = () => {
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
             Next Matches
           </h2>
-          <p className="text-muted-foreground">Don't miss the action</p>
+          <p className="text-muted-foreground">Don’t miss the action! See the upcoming matches for all ongoing T20 leagues in 2026. Get match dates, team details, venues, and live points tables for IPL, PSL, BBL, CPL, and other major domestic and women’s leagues.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
