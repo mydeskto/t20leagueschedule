@@ -195,6 +195,30 @@ const LeaguePage = () => {
     }
   }, [league?.id]);
 
+  useEffect(() => {
+    const hashToTab: Record<string, string> = {
+      schedule: "Schedule",
+      "points-table": "Points Table",
+      teams: "Teams",
+      venues: "Venues",
+      faq: "FAQ",
+      faqs: "FAQ",
+    };
+    const applyHash = () => {
+      const key = window.location.hash.replace(/^#/, "").toLowerCase();
+      const tab = hashToTab[key];
+      if (tab && tabs.includes(tab)) {
+        setActiveTab(tab);
+        requestAnimationFrame(() => {
+          document.getElementById("league-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+    };
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, [league?.id]);
+
   if (!league) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -299,7 +323,10 @@ const LeaguePage = () => {
       </section>
 
       {/* Tabs */}
-      <div className="sticky top-16 z-30 bg-transparant backdrop-blur-xl border-b border-glass-border">
+      <div
+        id="league-tabs"
+        className="sticky top-16 z-30 bg-transparant backdrop-blur-xl border-b border-glass-border scroll-mt-20"
+      >
         <div className="container-narrow px-4 md:px-8">
           <div className="flex gap-1 overflow-x-auto scrollbar-hide">
             {tabs.map((tab) => (

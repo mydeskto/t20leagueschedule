@@ -70,7 +70,7 @@ const FAQSection = ({
           ) : null}
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">{title}</h2>
           {intro ? (
-            <p className="text-muted-foreground text-left md:text-center leading-relaxed">{intro}</p>
+            <p className="text-muted-foreground text-center md:text-center leading-relaxed">{intro}</p>
           ) : (
             <p className="text-muted-foreground">Everything you need to know</p>
           )}

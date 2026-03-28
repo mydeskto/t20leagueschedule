@@ -74,7 +74,7 @@ const slides = [
   {
     id: 4,
     league: 'Caribbean Premier League',
-    shortName: 'CPL 2025',
+    shortName: 'CPL 2026',
     tagline: 'The Ultimate Cricket Party',
     description:
       'Where cricket meets carnival - experience the Caribbean flavor of explosive T20 action',
