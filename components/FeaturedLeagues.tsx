@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -27,6 +27,21 @@ const womenLeagueEmojis: Record<string, string> = {
   wcpl: "🏝️",
   "the-hundred-women": "🇬🇧",
 };
+
+const SITE_URL = "https://t20leagueschedule.com";
+
+function toIsoDate(input: string): string | undefined {
+  const normalized = input.replace(/\s+/g, " ").trim();
+  const direct = new Date(normalized);
+  if (!Number.isNaN(direct.getTime())) return direct.toISOString().slice(0, 10);
+
+  const m = normalized.match(/^(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})$/);
+  if (!m) return undefined;
+  const [, dd, monthWord, yyyy] = m;
+  const parsed = new Date(`${monthWord} ${dd}, ${yyyy}`);
+  if (Number.isNaN(parsed.getTime())) return undefined;
+  return parsed.toISOString().slice(0, 10);
+}
 
 const FeaturedLeagues = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -60,8 +75,102 @@ const FeaturedLeagues = () => {
     return () => observer.disconnect();
   }, []);
 
+  const featuredLeaguesJsonLd = useMemo(() => {
+    const allLeagues = [
+      ...leagues.map((league) => ({
+        id: league.id,
+        name: league.name,
+        shortName: league.shortName,
+        country: league.country,
+        seasonLabel: league.season,
+        startDate: league.startDate,
+        endDate: league.endDate,
+        teamsCount: league.teams.length,
+      })),
+      ...DomesticLeagues.map((league) => ({
+        id: league.id,
+        name: league.name,
+        shortName: league.shortName,
+        country: league.country,
+        seasonLabel: league.season,
+        startDate: league.startDate,
+        endDate: league.endDate,
+        teamsCount: league.teams.length,
+      })),
+      ...womenLeagues.map((league) => ({
+        id: league.id,
+        name: league.name,
+        shortName: league.shortName,
+        country: league.country,
+        seasonLabel: `Season ${league.seasonsTill2026}`,
+        startDate: league.window2026,
+        endDate: league.window2026,
+        teamsCount: undefined,
+      })),
+    ];
+
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": `${SITE_URL}/#featured-leagues`,
+          url: `${SITE_URL}/#leagues`,
+          name: "Featured T20 Cricket Leagues 2026",
+          description:
+            "International, domestic and women's T20 cricket league schedules, fixtures, teams, points tables and venues for 2026.",
+          isPartOf: { "@id": `${SITE_URL}/#website` },
+          about: { "@type": "Thing", name: "T20 cricket league schedules" },
+          mainEntity: {
+            "@type": "ItemList",
+            name: "Top T20 Leagues and Schedules",
+            numberOfItems: allLeagues.length,
+            itemListElement: allLeagues.map((league, index) => {
+              const startIso = toIsoDate(league.startDate);
+              const endIso = toIsoDate(league.endDate);
+              const leagueUrl = `${SITE_URL}/${league.id}`;
+              const eventLike: Record<string, unknown> = {
+                "@type": "SportsEvent",
+                name: `${league.name} ${league.seasonLabel} Schedule`,
+                url: leagueUrl,
+                sport: "Cricket",
+                eventStatus: "https://schema.org/EventScheduled",
+                location: {
+                  "@type": "Country",
+                  name: league.country,
+                },
+                organizer: {
+                  "@type": "SportsOrganization",
+                  name: league.name,
+                  sport: "Cricket",
+                },
+                description: `${league.name} schedule, fixtures, teams, points table and venue updates for ${league.seasonLabel}.`,
+              };
+
+              if (startIso) eventLike.startDate = startIso;
+              if (endIso) eventLike.endDate = endIso;
+              if (league.teamsCount) eventLike.competitorCount = league.teamsCount;
+
+              return {
+                "@type": "ListItem",
+                position: index + 1,
+                url: leagueUrl,
+                name: `${league.shortName} schedule`,
+                item: eventLike,
+              };
+            }),
+          },
+        },
+      ],
+    };
+  }, []);
+
   return (
     <section id="leagues" ref={sectionRef} className="section-padding relative scroll-mt-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(featuredLeaguesJsonLd) }}
+      />
       {/* Section background accent */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent pointer-events-none" />
 

@@ -74,122 +74,148 @@ export const metadata: Metadata = {
   ],
 }
 
-// Pre-compute JSON schemas outside component to avoid re-rendering
-const organizationSchema = {
+
+ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://nplschedule.com/#organization",
-  "name": "NPL T20 League",
-  "alternateName": "Nepal Premier League",
-  "url": "https://nplschedule.com/",
+  "@id": "https://t20leagueschedule.com/#organization",
+  "name": "T20 League Schedule",
+  "alternateName": "T20LeagueSchedule.com",
+  "url": "https://t20leagueschedule.com/",
   "logo": {
     "@type": "ImageObject",
-    "url": "https://nplschedule.com/images/newlogo.png",
+    "@id": "https://t20leagueschedule.com/#logo",
+    "url": "https://t20leagueschedule.com/_next/static/media/T20 League Schedule.d97f5d27.png",
     "width": 400,
-    "height": 200
+    "height": 200,
+    "caption": "T20 League Schedule Logo"
   },
-  "description": "Official schedule website for Nepal Premier League (NPL) T20 2026 including match fixtures, teams, points table, venues and latest updates.",
-  "sameAs": [
-    "https://www.facebook.com/nplschedule.com",
-    "https://x.com/nplschedule.com",
-    "https://www.instagram.com/nplschedule.com",
-    "https://www.youtube.com/@nplschedule.com"
-  ]
-};
-
-const sportsLeagueSchema = {
-  "@context": "https://schema.org",
-  "@type": "SportsLeague",
-  "@id": "https://nplschedule.com/#sportsleague",
-  "name": "Nepal Premier League (NPL) T20 2026",
-  "alternateName": "NPL T20 2026",
-  "sport": "Cricket",
-  "url": "https://nplschedule.com/",
-  "organizer": {
-    "@id": "https://nplschedule.com/#organization"
-  },
-  "startDate": "2026-11-17",
-  "endDate": "2026-12-15",
-  "location": {
-    "@type": "Country",
-    "name": "Nepal"
-  }
-};
-
-const sportsEventSchema = {
-  "@context": "https://schema.org",
-  "@type": "SportsEvent",
-  "@id": "https://nplschedule.com/#event",
-  "name": "Nepal Premier League (NPL) T20 2026",
-  "description": "Nepal Premier League (NPL) T20 2026 featuring top domestic and international cricket players competing across multiple venues in Nepal.",
-  "startDate": "2026-11-17",
-  "endDate": "2026-12-15",
+  "description": "Your ultimate destination for all T20 cricket leagues worldwide — featuring complete match schedules, updated points tables, team squads, venues, and live fixtures for IPL, PSL, BBL, CPL, SA20, ILT20, BPL, LPL, MLC, NPL, The Hundred and more in 2026.",
   "foundingDate": "2024",
-  "areaServed": "Nepal",
-  "eventStatus": "https://schema.org/EventScheduled",
-  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  "sport": "Cricket",
-  "image": "https://nplschedule.com/images/hero/hero1.jpg",
-  "location": {
-    "@type": "Place",
-    "name": "Tribhuvan University International Cricket Ground",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Kirtipur",
-      "addressRegion": "Bagmati",
-      "addressCountry": "NP"
-    }
-  },
-  "organizer": {
-    "@id": "https://nplschedule.com/#organization"
-  },
-  "offers": {
-    "@type": "Offer",
-    "url": "https://nplschedule.com/tickets",
-    "availability": "https://schema.org/InStock",
-    "priceCurrency": "NPR"
-  }
-};
-
-
-const webSiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "https://nplschedule.com/#website",
-  "url": "https://nplschedule.com/",
-  "name": "NPL Schedule 2026",
-  "about": {
-    "@id": "https://nplschedule.com/#sportsleague"
-  },
-  "description": "Complete match schedule, fixtures, teams, venues and live updates for Nepal Premier League (NPL) T20 2026.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "NPL T20 League",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://nplschedule.com/images/newlogo.png"
-    }
-  },
-  "inLanguage": "en",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://nplschedule.com/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  },
+  "areaServed": "Worldwide",
+  "knowsAbout": [
+    "T20 Cricket",
+    "IPL 2026",
+    "PSL 2026",
+    "BBL 2026",
+    "CPL 2026",
+    "SA20 2026",
+    "ILT20 2026",
+    "BPL 2026",
+    "LPL 2026",
+    "MLC 2026",
+    "NPL 2026",
+    "The Hundred 2026",
+    "Cricket Match Schedule",
+    "Points Table",
+    "Cricket Teams",
+    "Cricket Venues"
+  ],
+  "sameAs": [
+    "https://www.facebook.com/t20leagueschedule",
+    "https://x.com/t20leagueschedule",
+    "https://www.instagram.com/t20leagueschedule",
+    "https://www.youtube.com/@t20leagueschedule"
+  ],
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "customer support",
-    "areaServed": "NP",
-    "availableLanguage": ["English", "Nepali"]
+    "url": "https://t20leagueschedule.com/contact-us/",
+    "areaServed": "Worldwide",
+    "availableLanguage": ["English"]
   }
 };
+ 
+// ── 2. WEBSITE ───────────────────────────────────────────────
+export const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://t20leagueschedule.com/#website",
+  "url": "https://t20leagueschedule.com/",
+  "name": "T20 League Schedule 2026 – All Cricket League Fixtures & Points Table",
+  "alternateName": "T20LeagueSchedule",
+  "description": "Complete T20 cricket schedule 2026 — match fixtures, points tables, team squads, and venues for IPL, PSL, BBL, CPL, SA20, ILT20, BPL, LPL, MLC, NPL, The Hundred and all major domestic & women's leagues.",
+  "inLanguage": "en",
+  "publisher": {
+    "@id": "https://t20leagueschedule.com/#organization"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "T20 Cricket Leagues 2026",
+    "description": "All major T20 cricket leagues worldwide including IPL, PSL, BBL, CPL, SA20, ILT20, BPL, LPL, MLC, NPL, The Hundred, WPL, WBBL, T20 Blast and more."
+  },
+  "keywords": [
+    "T20 league schedule 2026",
+    "IPL 2026 schedule",
+    "PSL 2026 schedule",
+    "BBL 2026 schedule",
+    "CPL 2026 schedule",
+    "SA20 2026 schedule",
+    "ILT20 2026 schedule",
+    "BPL 2026 schedule",
+    "LPL 2026 schedule",
+    "MLC 2026 schedule",
+    "NPL 2026 schedule",
+    "The Hundred 2026 schedule",
+    "WPL 2026 schedule",
+    "WBBL 2026 schedule",
+    "T20 Blast 2026 schedule",
+    "T20 cricket fixtures 2026",
+    "T20 points table 2026",
+    "cricket match schedule today",
+    "all T20 leagues 2026",
+    "cricket team squads 2026",
+    "T20 cricket venues 2026",
+    "cricket schedule worldwide",
+    "upcoming T20 matches 2026",
+    "live T20 cricket schedule",
+    "T20 cricket standings 2026"
+  ],
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://t20leagueschedule.com/search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
+ 
+// ── 3. WEBPAGE (Homepage) ────────────────────────────────────
+export const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://t20leagueschedule.com/#webpage",
+  "url": "https://t20leagueschedule.com/",
+  "name": "T20 League 2026 Schedule – Full Fixtures, Teams & Points Table",
+  "description": "Stay updated with all T20 cricket leagues worldwide. Check match schedules, points tables, team squads, and venues — all in one place. Covering IPL, PSL, BBL, CPL, SA20, ILT20, BPL, LPL, MLC, NPL, The Hundred and more.",
+  "isPartOf": {
+    "@id": "https://t20leagueschedule.com/#website"
+  },
+  "about": {
+    "@id": "https://t20leagueschedule.com/#website"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://t20leagueschedule.com/"
+      }
+    ]
+  },
+  "inLanguage": "en",
+  "dateModified": new Date().toISOString().split("T")[0]
+};
+ 
 
 
 
 // Pre-stringify JSON to avoid runtime JSON.stringify calls
 const organizationSchemaJson = JSON.stringify(organizationSchema);
-const sportsEventSchemaJson = JSON.stringify(sportsEventSchema);
-const sportsLeagueSchemaJson = JSON.stringify(sportsLeagueSchema);
+const sportsEventSchemaJson = JSON.stringify(webPageSchema);
 const webSiteSchemaJson = JSON.stringify(webSiteSchema);
 
 export default function RootLayout({
@@ -276,10 +302,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: sportsEventSchemaJson }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: sportsLeagueSchemaJson }}
-        />
+        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: webSiteSchemaJson }}
